@@ -1,6 +1,6 @@
 # Button Shop - visualize web store statistics in grafana dashboard
 
-Wallace and Gromit established another geniuous bussiness with Wallace's Button-Machine. They sell tons of buttons around the world. Gromit as a good software engineer prepared .NET application to manage orders, but in hurry days he wants to plan their work. They needs to visualise how many order they have to process to adjust future button production and packing machines. 
+Wallace and Gromit established another geniuous bussiness with Wallace's Button-Machine. They sell tons of buttons around the world. Gromit as a good software engineer prepared .NET application to manage orders, but in hurry days he wants to plan their work. They need to visualise how many order they have to process to adjust future button production and packing machines. 
 
 ```
                 __ 

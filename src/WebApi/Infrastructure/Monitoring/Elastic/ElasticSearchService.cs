@@ -59,6 +59,5 @@ public sealed class ElasticSearchService : IElasticSearchService
 
     private async Task CreateIndexes()
     {
-
     }
 }

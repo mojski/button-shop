@@ -14,6 +14,12 @@ public sealed record class AddOrder : IRequest
     [JsonPropertyName("items")]
     public Dictionary<string, int> Items { get; init; } = new();
 
+    [JsonPropertyName("latitude")]
+    public required string Latitude { get; init; }
+
+    [JsonPropertyName("longitude")]
+    public required string Longitude { get; init; }
+
     [JsonPropertyName("shippingAddress")]
     public required string ShippingAddress { get; init; }
 }

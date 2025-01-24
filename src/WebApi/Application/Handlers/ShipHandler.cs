@@ -1,16 +1,19 @@
 ﻿namespace ButtonShop.WebApi.Application.Handlers;
 
 using ButtonShop.WebApi.Application.Commands;
+using ButtonShop.WebApi.Application.Events;
 using ButtonShop.WebApi.Domain.Interfaces;
 using MediatR;
 
 public sealed class ShipHandler : IRequestHandler<Ship>
 {
+    private readonly IPublisher mediator;
     private readonly IOrderRepository repository;
 
-    public ShipHandler(IOrderRepository repository)
+    public ShipHandler(IOrderRepository repository, IPublisher mediator)
     {
         this.repository = repository;
+        this.mediator = mediator;
     }
 
     public async Task Handle(Ship request, CancellationToken cancellationToken)
@@ -26,5 +29,12 @@ public sealed class ShipHandler : IRequestHandler<Ship>
         order!.Ship();
 
         await this.repository.ShipOrder(request.OrderId, cancellationToken);
+
+        var notification = new OrderShipped()
+        {
+            Id = order.Id,
+        };
+
+        await this.mediator.Publish(notification, cancellationToken);
     }
 }

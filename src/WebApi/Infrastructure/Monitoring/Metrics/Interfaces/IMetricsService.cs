@@ -1,4 +1,4 @@
-﻿namespace ButtonShop.WebApi.Infrastructure.Metrics;
+﻿namespace ButtonShop.WebApi.Infrastructure.Monitoring.Metrics.Interfaces;
 
 public interface IMetricsService
 {

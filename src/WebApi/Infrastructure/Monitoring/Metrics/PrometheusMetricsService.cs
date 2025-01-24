@@ -1,5 +1,6 @@
-﻿namespace ButtonShop.WebApi.Infrastructure.Metrics;
+﻿namespace ButtonShop.WebApi.Infrastructure.Monitoring.Metrics;
 
+using ButtonShop.WebApi.Infrastructure.Monitoring.Metrics.Interfaces;
 using Prometheus;
 
 public sealed class PrometheusMetricsService : IMetricsService

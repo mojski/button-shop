@@ -5,6 +5,12 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonShop.WebApi", "WebApi\ButtonShop.WebApi.csproj", "{FC8484B3-8E67-4EAE-8622-142927774C29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonShop.Application", "Application\ButtonShop.Application.csproj", "{FFE9B920-D414-4FB7-BEF6-259B51D210E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonShop.Infrastructure", "Infrastructure\ButtonShop.Infrastructure.csproj", "{83AE8FAF-DA19-44E2-ADE9-4641000161E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonShop.Domain", "Domain\ButtonShop.Domain.csproj", "{034478B2-BAAF-4447-98F6-45139E41D4A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,17 @@ Global
 		{FC8484B3-8E67-4EAE-8622-142927774C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC8484B3-8E67-4EAE-8622-142927774C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC8484B3-8E67-4EAE-8622-142927774C29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFE9B920-D414-4FB7-BEF6-259B51D210E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE9B920-D414-4FB7-BEF6-259B51D210E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE9B920-D414-4FB7-BEF6-259B51D210E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE9B920-D414-4FB7-BEF6-259B51D210E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83AE8FAF-DA19-44E2-ADE9-4641000161E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83AE8FAF-DA19-44E2-ADE9-4641000161E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83AE8FAF-DA19-44E2-ADE9-4641000161E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83AE8FAF-DA19-44E2-ADE9-4641000161E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034478B2-BAAF-4447-98F6-45139E41D4A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034478B2-BAAF-4447-98F6-45139E41D4A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034478B2-BAAF-4447-98F6-45139E41D4A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034478B2-BAAF-4447-98F6-45139E41D4A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -32,13 +32,13 @@ services:
     volumes:
       - ./grafana:/etc/grafana/provisioning/datasources
   elasticsearch:
-    image: elasticsearch:7.16.1
-    container_name: es
-    environment:
-      discovery.type: single-node
-      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    image: elasticsearch:8.8.0
+    container_name: elasticsearch
     ports:
-      - "9200:9200"
-      - "9300:9300"
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
 # volumes:
 #   prom_data:

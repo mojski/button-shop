@@ -1,5 +1,5 @@
-using ButtonShop.WebApi.Application;
-using ButtonShop.WebApi.Infrastructure;
+using ButtonShop.Application;
+using ButtonShop.Infrastructure;
 using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);

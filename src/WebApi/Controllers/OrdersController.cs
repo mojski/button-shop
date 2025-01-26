@@ -1,6 +1,6 @@
 ﻿namespace ButtonShop.WebApi.Controllers;
 
-using ButtonShop.WebApi.Application.Commands;
+using ButtonShop.Application.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

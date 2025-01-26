@@ -33,6 +33,7 @@ services:
       - ./grafana:/etc/grafana/provisioning/datasources
   elasticsearch:
     image: elasticsearch:8.8.0
+    container_name: elasticsearch
     ports:
       - 9200:9200
       - 9300:9300

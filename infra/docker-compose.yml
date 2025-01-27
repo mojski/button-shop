@@ -21,6 +21,9 @@ services:
   grafana:
     image: grafana/grafana
     container_name: grafana
+    depends_on:
+      - prometheus
+      - elasticsearch
     ports:
       - 3000:3000
     restart: unless-stopped
@@ -30,7 +33,8 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=grafana
     volumes:
-      - ./grafana:/etc/grafana/provisioning/datasources
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+      #- ./grafana/dashboards:/etc/grafana/provisioning/dashboards
   elasticsearch:
     image: elasticsearch:8.8.0
     container_name: elasticsearch

@@ -29,7 +29,7 @@ public sealed class OrderAddedHandler : INotificationHandler<OrderAdded>
         {
             Longitude = notification.Longitude,
             Latitude = notification.Latitude,
-            Quantity = notification.Items.Count,
+            Quantity = notification.Items.Sum(item => item.Value),
         };
 
         var @event = new BusinessEvent

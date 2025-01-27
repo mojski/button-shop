@@ -11,4 +11,4 @@ builder.Services.AddInfrastructure();
 var app = builder.Build();
 app.UseMetricServer();
 app.MapControllers();
-app.Run();
+await app.RunAsync();

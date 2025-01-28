@@ -42,3 +42,4 @@ Art by Joan G. Stark
 - [ ] shop cilents simulations app
 - [ ] test project
 - [ ] tracing
+- [x] clean architecture

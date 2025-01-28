@@ -21,3 +21,24 @@ Wallace and Gromit established another geniuous bussiness with Wallace's Button-
 jgs / /;:;:;:;:;\_/:;:;:;:;:\ \ .'  '-.__.-'   `-.
 Art by Joan G. Stark
 ```
+
+
+### Dashboard
+![alt text](/readme_assets/image.png)
+
+
+### TODO 
+
+- [ ] finish dashboards
+- [ ] aspnet core dashboard
+- [ ] loki
+- [ ] open telemetry
+- [ ] add persistence
+- [ ] refactor docker compose
+- [ ] add metabase
+- [ ] add validation
+- [ ] Add request behavior to handle custom exceptions
+- [ ] alerts
+- [ ] shop cilents simulations app
+- [ ] test project
+- [ ] tracing

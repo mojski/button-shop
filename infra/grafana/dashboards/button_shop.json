@@ -91,10 +91,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "${DS_ELASTICSEARCH}"
-      },
+      "datasource": "Elasticsearch",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -206,10 +203,7 @@
         {
           "alias": "",
           "bucketAggs": [],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "${DS_ELASTICSEARCH}"
-          },
+          "datasource": "Elasticsearch",
           "metrics": [
             {
               "id": "1",
@@ -228,10 +222,7 @@
       "type": "geomap"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -311,10 +302,7 @@
       "pluginVersion": "11.4.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "Prometheus",
           "disableTextWrap": false,
           "editorMode": "builder",
           "expr": "button_shop_sold_red",
@@ -326,10 +314,7 @@
           "useBackend": false
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "Prometheus",
           "disableTextWrap": false,
           "editorMode": "builder",
           "expr": "button_shop_sold_green",
@@ -343,10 +328,7 @@
           "useBackend": false
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "Prometheus",
           "disableTextWrap": false,
           "editorMode": "builder",
           "expr": "button_shop_osold_blue",
@@ -364,10 +346,7 @@
       "type": "piechart"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -445,10 +424,7 @@
       "pluginVersion": "11.4.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "Prometheus",
           "disableTextWrap": false,
           "editorMode": "builder",
           "expr": "button_shop_orders_total",
@@ -460,10 +436,7 @@
           "useBackend": false
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "Prometheus",
           "disableTextWrap": false,
           "editorMode": "builder",
           "expr": "button_shop_orders_waiting",
@@ -477,10 +450,7 @@
           "useBackend": false
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "Prometheus",
           "disableTextWrap": false,
           "editorMode": "builder",
           "expr": "button_shop_orders_shipped",
@@ -498,10 +468,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -551,10 +518,7 @@
       "pluginVersion": "11.4.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "Prometheus",
           "disableTextWrap": false,
           "editorMode": "builder",
           "expr": "button_shop_orders_total",
@@ -566,10 +530,7 @@
           "useBackend": false
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "Prometheus",
           "disableTextWrap": false,
           "editorMode": "builder",
           "expr": "button_shop_orders_waiting",
@@ -583,10 +544,7 @@
           "useBackend": false
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "Prometheus",
           "disableTextWrap": false,
           "editorMode": "builder",
           "expr": "button_shop_orders_shipped",
@@ -604,10 +562,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -659,10 +614,7 @@
       "pluginVersion": "11.4.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "Prometheus",
           "disableTextWrap": false,
           "editorMode": "code",
           "expr": "(button_shop_orders_waiting/button_shop_orders_total)*100",
@@ -702,7 +654,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "New dashboard",
+  "title": "Button Shop Dashboard",
   "uid": "aeagwxhkou2gwa",
   "version": 4,
   "weekStart": ""

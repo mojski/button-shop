@@ -34,7 +34,6 @@ Art by Joan G. Stark
 - [ ] loki
 - [ ] open telemetry
 - [ ] add persistence
-- [ ] refactor docker compose
 - [ ] add metabase
 - [ ] add validation
 - [ ] Add request behavior to handle custom exceptions
@@ -48,3 +47,5 @@ Art by Joan G. Stark
 - [ ] add ci/cd basic jobs
 - [ ] kubernetes
 - [ ] Dockerfile for app
+- [ ] docker comppose for app and infra
+- [ ] move to .NET 9

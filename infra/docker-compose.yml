@@ -1,7 +1,7 @@
 # github.com/docker/awesome-compose
-# networks:
-#   button-network:
-#     driver: bridge
+networks:
+  button-network:
+    driver: bridge
 services:
   prometheus:
     image: prom/prometheus
@@ -10,14 +10,13 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
     ports:
       - 9090:9090
-    # networks:
-    #   - button-network
-    # extra_hosts:
-    #   - host.docker.internal:host-gateway
+    networks:
+      - button-network
+
     restart: unless-stopped
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      #- prom_data:/prometheus
+      - prom_data:/prometheus
   grafana:
     image: grafana/grafana
     container_name: grafana
@@ -27,22 +26,29 @@ services:
     ports:
       - 3000:3000
     restart: unless-stopped
-    # networks:
-    #   - button-network
+    networks:
+      - button-network
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=grafana
     volumes:
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
-      #- ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
   elasticsearch:
     image: elasticsearch:8.8.0
     container_name: elasticsearch
     ports:
       - 9200:9200
       - 9300:9300
+    restart: unless-stopped
+    networks:
+      - button-network
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
-# volumes:
-#   prom_data:
+    volumes:
+      - elastic_data:/usr/share/elasticsearch/data
+volumes:
+  prom_data:
+  elastic_data:

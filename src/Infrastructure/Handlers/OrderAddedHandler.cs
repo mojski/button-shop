@@ -34,8 +34,8 @@ public sealed class OrderAddedHandler : INotificationHandler<OrderAdded>
 
         var @event = new BusinessEvent
         {
-            Level = "inf",
-            Message = nameof(notification),
+            Level = "info",
+            Message = nameof(OrderAdded),
         };
 
         await this.elasticSearchService.AddGeoLocationStat(geolocation);

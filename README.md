@@ -24,7 +24,7 @@ Art by Joan G. Stark
 
 
 ### Dashboard
-![alt text](/readme_assets/image.png)
+[alt text](/readme_assets/image.png)
 
 
 ### TODO 

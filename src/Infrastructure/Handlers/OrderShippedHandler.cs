@@ -23,8 +23,8 @@ public sealed class OrderShippedHandler : INotificationHandler<OrderShipped>
 
         var @event = new BusinessEvent
         {
-            Level = "inf",
-            Message = nameof(notification),
+            Level = "info",
+            Message = nameof(OrderShipped),
         };
 
         await this.elasticSearchService.AddEvent(@event);

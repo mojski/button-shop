@@ -6,8 +6,8 @@ contactPoints:
         - uid: discord-uid
           type: discordcd
           settings:
-            avatar_url: ""
-            url: https://discord.com/api/webhooks/{webhook_id}/{webhook_token}
+            avatar_url: https://avatars.githubusercontent.com/u/32677961?s=400&u=f251bee20bb2ee5afd03454974e1789bd3895ba6&v=4
+            url: https://discord.com/api/webhooks/1337433830067535994/K9ewgstzBNKYmAyX7q3MjuDA2tyew_zHFSEyZKMW-mRbAkj_5Mlb2oypRAAHPK45Ghyd
             use_discord_username: false
           disableResolveMessage: true
     - orgId: 1

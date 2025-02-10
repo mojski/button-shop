@@ -1,0 +1,20 @@
+apiVersion: 1
+contactPoints:
+    - orgId: 1
+      name: discord
+      receivers:
+        - uid: discord-uid
+          type: discordcd
+          settings:
+            avatar_url: ""
+            url: https://discord.com/api/webhooks/{webhook_id}/{webhook_token}
+            use_discord_username: false
+          disableResolveMessage: true
+    - orgId: 1
+      name: email receiver
+      receivers:
+        - uid: fecmv3ctwnldsb
+          type: email
+          settings:
+            addresses: <example@email.com>
+          disableResolveMessage: false

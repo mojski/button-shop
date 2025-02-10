@@ -35,6 +35,7 @@ services:
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
       - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
       - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ./alerting:/etc/grafana/provisioning/alerting
   elasticsearch:
     image: elasticsearch:8.8.0
     container_name: elasticsearch

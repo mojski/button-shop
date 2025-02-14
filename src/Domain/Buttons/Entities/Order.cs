@@ -29,7 +29,7 @@ public sealed class Order
 
         var parsedColor = (ButtonColors)result;
 
-        if (this.Items.TryAdd(parsedColor, quantity))
+        if (this.Items.ContainsKey(parsedColor))
         {
             this.Items[parsedColor] += quantity;
         }

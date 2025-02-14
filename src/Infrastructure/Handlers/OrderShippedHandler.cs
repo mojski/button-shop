@@ -8,6 +8,8 @@ using MediatR;
 
 public sealed class OrderShippedHandler : INotificationHandler<OrderShipped>
 {
+    private static string DEFAULT_LOG_LEVEL = "INFO";
+
     private readonly IElasticSearchService elasticSearchService;
     private readonly IMetricsService metricsService;
 
@@ -23,7 +25,7 @@ public sealed class OrderShippedHandler : INotificationHandler<OrderShipped>
 
         var @event = new BusinessEvent
         {
-            Level = "info",
+            Level = DEFAULT_LOG_LEVEL,
             Message = nameof(OrderShipped),
         };
 

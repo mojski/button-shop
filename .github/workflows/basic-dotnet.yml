@@ -1,5 +1,4 @@
-name: .NET 8 Build
-
+name: .NET 9 Build and tests
 on:
   push:
     branches:
@@ -11,21 +10,34 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Setup .NET 8
+      - name: Setup .NET 9
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
-
-      - name: List files (debugging step)
-        run: ls -la src
-
+          dotnet-version: 9.0.x
       - name: Restore dependencies
         run: dotnet restore src/ButtonShop.sln
-
       - name: Build the project
         run: dotnet build src/ButtonShop.sln --configuration Release --no-restore
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore
+        run: dotnet restore src/ButtonShop.sln
+      - name: Run Application unit tests
+        run: dotnet test src/Application/ButtonShop.Application.Tests/ButtonShop.Application.Tests.csproj --configuration Release --no-restore
+      - name: Run Domain unit tests
+        run: dotnet test src/Domain/ButtonShop.Domain.Tests/ButtonShop.Domain.Tests.csproj --configuration Release --no-restore
+      - name: Run Infrastructure unit tests
+        run: dotnet test src/Infrastructure/ButtonShop.Infrastructure.Tests/ButtonShop.Infrastructure.Tests.csproj --configuration Release --no-restore

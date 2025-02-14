@@ -46,6 +46,6 @@ Art by Joan G. Stark
 - [x] unit tests
 - [ ] add ci/cd basic jobs
 - [ ] kubernetes
-- [ ] Dockerfile for app
-- [ ] docker comppose for app and infra
+- [x] Dockerfile for app
+- [x] docker comppose for app and infra
 - [x] move to .NET 9

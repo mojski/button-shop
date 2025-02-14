@@ -7,7 +7,7 @@ using ButtonShop.Infrastructure.Monitoring.Elastic.Models;
 using ButtonShop.Infrastructure.Monitoring.Metrics.Interfaces;
 using MediatR;
 
-public sealed class OrderAddedHandler : INotificationHandler<OrderAdded>
+internal sealed class OrderAddedHandler : INotificationHandler<OrderAdded>
 {
     private static string DEFAULT_LOG_LEVEL = "INFO";
     private readonly IElasticSearchService elasticSearchService;

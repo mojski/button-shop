@@ -6,6 +6,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="ButtonShop.Infrastructure.UnitTests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Application\ButtonShop.Application.csproj" />
   </ItemGroup>
 

@@ -2,7 +2,7 @@
 
 using ButtonShop.Infrastructure.Monitoring.Elastic.Models;
 
-public interface IElasticSearchService
+internal interface IElasticSearchService
 {
     Task AddEvent(BusinessEvent businessEvent);
     Task AddGeoLocationStat(OrderGeoLoc location);

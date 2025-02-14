@@ -32,12 +32,9 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 9.0.x
-
-      - name: Restore
-        run: dotnet restore src/ButtonShop.sln
       - name: Run Application unit tests
-        run: dotnet test src/Application/ButtonShop.Application.Tests/ButtonShop.Application.Tests.csproj --configuration Release --no-restore
+        run: dotnet test tests/ButtonShop.Application.Tests/ButtonShop.Application.Tests.csproj --configuration Release --no-restore
       - name: Run Domain unit tests
-        run: dotnet test src/Domain/ButtonShop.Domain.Tests/ButtonShop.Domain.Tests.csproj --configuration Release --no-restore
+        run: dotnet test tests/ButtonShop.Domain.Tests/ButtonShop.Domain.Tests.csproj --configuration Release --no-restore
       - name: Run Infrastructure unit tests
-        run: dotnet test src/Infrastructure/ButtonShop.Infrastructure.Tests/ButtonShop.Infrastructure.Tests.csproj --configuration Release --no-restore
+        run: dotnet test tests/ButtonShop.Infrastructure.Tests/ButtonShop.Infrastructure.Tests.csproj --configuration Release --no-restore

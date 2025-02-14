@@ -1,0 +1,63 @@
+networks:
+  button-network:
+    driver: bridge
+
+services:
+  buttonshop:
+    build: .
+    image: buttonshop:local
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ELASTICSEARCH__ADDRESS: "http://elasticsearch:9200"
+    ports:
+      - "5080:5080"
+    networks:
+      - button-network
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    networks:
+      - button-network
+    restart: unless-stopped
+    volumes:
+      - ../infra/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prom_data:/prometheus
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    depends_on:
+      - prometheus
+      - elasticsearch
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    networks:
+      - button-network
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+    volumes:
+      - ../infra/grafana/datasources:/etc/grafana/provisioning/datasources
+      - ../infra/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ../infra/grafana/dashboards:/var/lib/grafana/dashboards
+  elasticsearch:
+    image: elasticsearch:8.8.0
+    container_name: elasticsearch
+    ports:
+      - 9200:9200
+      - 9300:9300
+    restart: unless-stopped
+    networks:
+      - button-network
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    volumes:
+      - elastic_data:/usr/share/elasticsearch/data
+volumes:
+  prom_data:
+  elastic_data:

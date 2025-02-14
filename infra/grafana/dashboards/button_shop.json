@@ -275,7 +275,7 @@
           "datasource": "Prometheus",
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "button_shop_osold_blue",
+          "expr": "button_shop_sold_blue",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,

@@ -1,6 +1,6 @@
 ﻿namespace ButtonShop.Infrastructure.Monitoring.Elastic;
 
-public sealed class ElasticSearchOptions
+internal sealed class ElasticSearchOptions
 {
     public const string SECTION_NAME = "ElasticSearch";
 

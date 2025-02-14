@@ -3,7 +3,7 @@
 using ButtonShop.Domain.Entities;
 using ButtonShop.Domain.Interfaces;
 
-public class OrderRepository : IOrderRepository
+internal class OrderRepository : IOrderRepository
 {
     private readonly Dictionary<Guid, Order> orders = [];
 

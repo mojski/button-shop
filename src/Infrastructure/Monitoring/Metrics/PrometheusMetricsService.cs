@@ -3,7 +3,7 @@
 using ButtonShop.Infrastructure.Monitoring.Metrics.Interfaces;
 using Prometheus;
 
-public sealed class PrometheusMetricsService : IMetricsService
+internal sealed class PrometheusMetricsService : IMetricsService
 {
     private readonly Counter redButtonCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.SOLD_RED}", MetricConstants.SOLD_RED_TITLE);
     private readonly Counter greenCounterButtonCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.SOLD_GREEN}", MetricConstants.SOLD_GREEN_TITLE);

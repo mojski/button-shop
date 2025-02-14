@@ -1,6 +1,6 @@
 ﻿namespace ButtonShop.Infrastructure.Monitoring.Metrics.Interfaces;
 
-public interface IMetricsService
+internal interface IMetricsService
 {
     void AddOrder(int value = 1);
     void SellBlue(int count);

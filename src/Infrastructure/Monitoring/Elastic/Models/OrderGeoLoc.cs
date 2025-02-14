@@ -1,6 +1,6 @@
 ﻿namespace ButtonShop.Infrastructure.Monitoring.Elastic.Models;
 
-public record class OrderGeoLoc
+internal record class OrderGeoLoc
 {
     public string GeoLocation => $"{this.Latitude},{this.Longitude}";
     public string? Id { get; private set; } = Guid.NewGuid().ToString();

@@ -21,8 +21,11 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: List files (debugging step)
+        run: ls -la src
+
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore src/ButtonShop.sln
 
       - name: Build the project
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build src/ButtonShop.sln --configuration Release --no-restore

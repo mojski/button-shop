@@ -39,7 +39,7 @@ Art by Joan G. Stark
 - [ ] Add request behavior to handle custom exceptions
 - [ ] alerts
 - [ ] shop cilents simulations app
-- [ ] test project
+- [x] test project
 - [ ] tracing
 - [x] clean architecture
 - [ ] add wiki
@@ -48,4 +48,4 @@ Art by Joan G. Stark
 - [ ] kubernetes
 - [ ] Dockerfile for app
 - [ ] docker comppose for app and infra
-- [ ] move to .NET 9
+- [x] move to .NET 9

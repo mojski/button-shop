@@ -5,13 +5,12 @@ using Prometheus;
 
 public sealed class PrometheusMetricsService : IMetricsService
 {
-    private readonly Counter blueButtonCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.SOLD_BLUE}", "Total number of blue buttons sold.");
-    private readonly Counter greenCounterButtonCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.SOLD_GREEN}", "Total number of green buttons sold.");
-    private readonly Counter orderCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.ORDERS_TOTAL}", "Total number of orders.");
-    private readonly Counter orderShippedCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.ORDERS_SHIPPED}", "Order shipped.");
-    private readonly Gauge orderWaitingGauge = Metrics.CreateGauge($"{MetricConstants.PREFIX}_{MetricConstants.ORDERS_WAITING}", "Order waiting.");
-
-    private readonly Counter redButtonCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.SOLD_RED}", "Total number of red buttons sold.");
+    private readonly Counter redButtonCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.SOLD_RED}", MetricConstants.SOLD_RED_TITLE);
+    private readonly Counter greenCounterButtonCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.SOLD_GREEN}", MetricConstants.SOLD_GREEN_TITLE);
+    private readonly Counter blueButtonCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.SOLD_BLUE}", MetricConstants.SOLD_BLUE_TITLE);
+    private readonly Counter orderCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.ORDERS_TOTAL}", MetricConstants.ORDERS_TOTAL_TITLE);
+    private readonly Counter orderShippedCounter = Metrics.CreateCounter($"{MetricConstants.PREFIX}_{MetricConstants.ORDERS_SHIPPED}", MetricConstants.ORDERS_SHIPPED_TITLE);
+    private readonly Gauge orderWaitingGauge = Metrics.CreateGauge($"{MetricConstants.PREFIX}_{MetricConstants.ORDERS_WAITING}", MetricConstants.ORDERS_WAITING_TITLE);
 
     public void AddOrder(int value = 1)
     {

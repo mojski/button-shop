@@ -43,7 +43,7 @@ Art by Joan G. Stark
 - [ ] tracing
 - [x] clean architecture
 - [ ] add wiki
-- [ ] unit tests
+- [x] unit tests
 - [ ] add ci/cd basic jobs
 - [ ] kubernetes
 - [ ] Dockerfile for app

@@ -33,8 +33,8 @@ jobs:
         with:
           dotnet-version: 9.0.x
       - name: Run Application unit tests
-        run: dotnet test tests/ButtonShop.Application.Tests/ButtonShop.Application.Tests.csproj --configuration Release --no-restore
+        run: dotnet test tests/ButtonShop.Application.UnitTests/ButtonShop.Application.UnitTests.csproj --configuration Release --no-restore
       - name: Run Domain unit tests
-        run: dotnet test tests/ButtonShop.Domain.Tests/ButtonShop.Domain.Tests.csproj --configuration Release --no-restore
+        run: dotnet test tests/ButtonShop.Domain.UnitTests/ButtonShop.Domain.UnitTests.csproj --configuration Release --no-restore
       - name: Run Infrastructure unit tests
-        run: dotnet test tests/ButtonShop.Infrastructure.Tests/ButtonShop.Infrastructure.Tests.csproj --configuration Release --no-restore
+        run: dotnet test tests/ButtonShop.Infrastructure.UnitTests/ButtonShop.Infrastructure.UnitTests.csproj --configuration Release --no-restore

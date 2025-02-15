@@ -37,14 +37,14 @@ Art by Joan G. Stark
 - [ ] add metabase
 - [ ] add validation
 - [ ] Add request behavior to handle custom exceptions
-- [ ] alerts
+- [x] alerts
 - [ ] shop cilents simulations app
 - [x] test project
 - [ ] tracing
 - [x] clean architecture
 - [ ] add wiki
 - [x] unit tests
-- [ ] add ci/cd basic jobs
+- [x] add ci/cd basic jobs
 - [ ] kubernetes
 - [x] Dockerfile for app
 - [x] docker comppose for app and infra

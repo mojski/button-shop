@@ -31,10 +31,13 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=grafana
+      # provide webhook url if you want
+      - GF_DISCORD_WEBHOOK_URL=${GF_DISCORD_WEBHOOK_URL:-https://discord.com/api/webhooks/your-channel-id/token}
     volumes:
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
       - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
       - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/provisioning/alerting:/etc/grafana/provisioning/alerting
   elasticsearch:
     image: elasticsearch:8.8.0
     container_name: elasticsearch

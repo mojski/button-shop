@@ -4,5 +4,6 @@ datasources:
     type: elasticsearch
     access: proxy
     url: http://elasticsearch:9200
+    uid: elasticsearch-ds
     jsonData:
       timeField: "timestamp"

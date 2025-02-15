@@ -15,6 +15,7 @@ public sealed class OrdersController : ControllerBase
         this.mediator = mediator;
     }
 
+    [HttpPost]
     public async Task<IActionResult> Add([FromBody] AddOrder command, CancellationToken cancellationToken)
     {
         await this.mediator.Send(command, cancellationToken);
@@ -22,6 +23,7 @@ public sealed class OrdersController : ControllerBase
         return this.Accepted();
     }
 
+    [HttpPost]
     public async Task<IActionResult> Ship([FromBody] Ship command, CancellationToken cancellationToken)
     {
         await this.mediator.Send(command, cancellationToken);

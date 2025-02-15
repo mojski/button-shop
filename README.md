@@ -39,13 +39,13 @@ Art by Joan G. Stark
 - [ ] Add request behavior to handle custom exceptions
 - [ ] alerts
 - [ ] shop cilents simulations app
-- [ ] test project
+- [x] test project
 - [ ] tracing
 - [x] clean architecture
 - [ ] add wiki
-- [ ] unit tests
+- [x] unit tests
 - [ ] add ci/cd basic jobs
 - [ ] kubernetes
-- [ ] Dockerfile for app
-- [ ] docker comppose for app and infra
-- [ ] move to .NET 9
+- [x] Dockerfile for app
+- [x] docker comppose for app and infra
+- [x] move to .NET 9

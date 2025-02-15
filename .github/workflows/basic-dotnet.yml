@@ -1,0 +1,40 @@
+name: .NET 9 Build and tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 9.0.x
+      - name: Restore dependencies
+        run: dotnet restore src/ButtonShop.sln
+      - name: Build the project
+        run: dotnet build src/ButtonShop.sln --configuration Release --no-restore
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 9.0.x
+      - name: Run Application unit tests
+        run: dotnet test tests/ButtonShop.Application.UnitTests/ButtonShop.Application.UnitTests.csproj --configuration Release --no-restore
+      - name: Run Domain unit tests
+        run: dotnet test tests/ButtonShop.Domain.UnitTests/ButtonShop.Domain.UnitTests.csproj --configuration Release --no-restore
+      - name: Run Infrastructure unit tests
+        run: dotnet test tests/ButtonShop.Infrastructure.UnitTests/ButtonShop.Infrastructure.UnitTests.csproj --configuration Release --no-restore

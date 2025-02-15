@@ -7,8 +7,9 @@ using ButtonShop.Infrastructure.Monitoring.Elastic.Models;
 using ButtonShop.Infrastructure.Monitoring.Metrics.Interfaces;
 using MediatR;
 
-public sealed class OrderAddedHandler : INotificationHandler<OrderAdded>
+internal sealed class OrderAddedHandler : INotificationHandler<OrderAdded>
 {
+    private static string DEFAULT_LOG_LEVEL = "INFO";
     private readonly IElasticSearchService elasticSearchService;
     private readonly IMetricsService metricsService;
 
@@ -34,11 +35,11 @@ public sealed class OrderAddedHandler : INotificationHandler<OrderAdded>
 
         var @event = new BusinessEvent
         {
-            Level = "info",
+            Level = DEFAULT_LOG_LEVEL,
             Message = nameof(OrderAdded),
         };
 
         await this.elasticSearchService.AddGeoLocationStat(geolocation);
-        //await service.AddEvent(@event);
+        await this.elasticSearchService.AddEvent(@event);
     }
 }

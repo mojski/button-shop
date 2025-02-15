@@ -1,6 +1,6 @@
 ﻿namespace ButtonShop.Infrastructure.Monitoring.Elastic.Models;
 
-public record class BusinessEvent
+internal record class BusinessEvent
 {
     public string? Id { get; private set; } = Guid.NewGuid().ToString();
     public required string Level { get; init; }

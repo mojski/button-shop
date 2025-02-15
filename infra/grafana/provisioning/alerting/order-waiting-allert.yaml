@@ -5,7 +5,7 @@ groups:
       folder: alerts
       interval: 1m
       rules:
-        - uid: aecmx5iwttc74a
+        - uid: fed5stp0poyyob
           title: order-waiting-alert
           condition: C
           data:
@@ -15,14 +15,18 @@ groups:
                 to: 0
               datasourceUid: prometheus-ds
               model:
-                editorMode: code
+                disableTextWrap: false
+                editorMode: builder
                 expr: button_shop_orders_waiting
+                fullMetaSearch: false
+                includeNullMetadata: true
                 instant: true
                 intervalMs: 1000
                 legendFormat: __auto
                 maxDataPoints: 43200
                 range: false
                 refId: A
+                useBackend: false
             - refId: B
               datasourceUid: __expr__
               model:
@@ -47,8 +51,6 @@ groups:
                 maxDataPoints: 43200
                 reducer: last
                 refId: B
-                settings:
-                    mode: ""
                 type: reduce
             - refId: C
               datasourceUid: __expr__
@@ -56,7 +58,7 @@ groups:
                 conditions:
                     - evaluator:
                         params:
-                            - 16
+                            - 20
                         type: gt
                       operator:
                         type: and
@@ -78,9 +80,8 @@ groups:
           noDataState: NoData
           execErrState: Error
           for: 1m
-          annotations:
-            description: optional desc
-            summary: Orders waiting Gromit!
+          annotations: {}
+          labels: {}
           isPaused: false
           notification_settings:
-            receiver: discord
+            receiver: Discord

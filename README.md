@@ -1,6 +1,6 @@
 # Button Shop - visualize web store statistics in grafana dashboard
 
-A brilliant inventor developed a machine for making buttons. In his online store, he sells tons of buttons in three colors: red, green and blue. but in hurry days he wants to plan their work. Hee needs to visualise how many order they have to process to adjust future button production and packing machines. 
+A brilliant inventor has developed a machine for making buttons. In his online store, he sells tons of buttons in three colors: red, green, and blue. On busy days, he wants to plan his work efficiently. He needs to visualize how many orders they have to process to adjust future button production and packing machine operations.
 
 
 ### Dashboard

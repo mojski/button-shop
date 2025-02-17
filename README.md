@@ -1,31 +1,14 @@
 # Button Shop - visualize web store statistics in grafana dashboard
 
-Wallace and Gromit established another geniuous bussiness with Wallace's Button-Machine. They sell tons of buttons around the world. Gromit as a good software engineer prepared .NET application to manage orders, but in hurry days he wants to plan their work. They need to visualise how many order they have to process to adjust future button production and packing machines. 
-
-```
-                __ 
-              .'  '. 
-             :      :
-             | _  _ |
-          .-.|(o)(o)|.-.        _._          _._
-         ( ( | .--. | ) )     .',_ '.      .' _,'.
-          '-/ (    ) \-'     / /' `\ \ __ / /' `\ \
-           /   '--'   \     / /     \.'  './     \ \
-           \ `"===="` /     `-`     : _  _ :      `-`
-            `\      /'              |(o)(o)|
-              `\  /'                |      |
-              /`-.-`\_             /        \
-        _..:;\._/V\_./:;.._       /   .--.   \
-      .'/;:;:;\ /^\ /:;:;:\'.     |  (    )  | 
-     / /;:;:;:;\| |/:;:;:;:\ \    _\  '--'  /__
-jgs / /;:;:;:;:;\_/:;:;:;:;:\ \ .'  '-.__.-'   `-.
-Art by Joan G. Stark
-```
+A brilliant inventor developed a machine for making buttons. In his online store, he sells tons of buttons in three colors: red, green and blue. but in hurry days he wants to plan their work. Hee needs to visualise how many order they have to process to adjust future button production and packing machines. 
 
 
 ### Dashboard
 ![dashboard example](/readme_assets/dashboard.png)
 
+### Actual architecture
+
+![alt text](/readme_assets/arch.png)
 
 ### TODO 
 

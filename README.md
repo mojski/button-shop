@@ -4,18 +4,18 @@ A brilliant inventor has developed a machine for making buttons. In his online s
 
 
 ### Dashboard
-![dashboard example](/readme_assets/dashboard.png)
+![dashboard example](/doc/readme_assets/dashboard.png)
 
 ### Actual architecture
 
-![alt text](/readme_assets/arch.png)
+![alt text](/doc/readme_assets/scheme.png)
 
 ### TODO 
 
 - [ ] finish dashboards
 - [ ] aspnet core dashboard
-- [ ] loki
-- [ ] open telemetry
+- [x] loki
+- [x] open telemetry
 - [ ] add persistence
 - [ ] add metabase
 - [ ] add validation
@@ -23,7 +23,7 @@ A brilliant inventor has developed a machine for making buttons. In his online s
 - [x] alerts
 - [ ] shop cilents simulations app
 - [x] test project
-- [ ] tracing
+- [x] tracing
 - [x] clean architecture
 - [ ] add wiki
 - [x] unit tests

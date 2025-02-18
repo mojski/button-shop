@@ -23,6 +23,8 @@ services:
     depends_on:
       - prometheus
       - elasticsearch
+      - loki
+      - tempo
     ports:
       - 3000:3000
     restart: unless-stopped
@@ -52,6 +54,50 @@ services:
       - xpack.security.enabled=false
     volumes:
       - elastic_data:/usr/share/elasticsearch/data
+  otel:
+    container_name: otel
+    image: otel/opentelemetry-collector:latest
+    environment:
+      - OTEL_LOG_LEVEL=debug
+    command: --config=/etc/otel-collector-config.yml
+    volumes:
+      - ./otel/otel-collector-config.yml:/etc/otel-collector-config.yml
+    networks:
+      - button-network
+    ports:
+      - "1888:1888"
+      - "8888:8888"
+      - "8889:8889"
+      - "13133:13133"
+      - "4317:4317"
+      - "4318:4318"
+      - "55679:55679"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+  loki:
+    container_name: loki
+    image: grafana/loki:latest
+    ports:
+      - "3100:3100"
+      - "9095:9095"
+    environment:
+      - ALLOW_STRUCTURED_METADATA=true
+    networks:
+      - button-network
+  tempo:
+    image: grafana/tempo:latest
+    container_name: tempo
+    volumes:
+      - ./tempo/tempo-config.yaml:/etc/tempo-config.yaml
+      #- ./tempo-data:/tmp/tempo
+    command: [ "-config.file=/etc/tempo-config.yaml" ]
+    ports:
+      - "3200:3200"  # grafana API
+      - "4319:4317"  # OTLP gRPC
+      - "4320:4318"  # OTLP HTTP
+      - "9411:9411"  # Zipkin API
+    networks:
+      - button-network
 volumes:
   prom_data:
   elastic_data:

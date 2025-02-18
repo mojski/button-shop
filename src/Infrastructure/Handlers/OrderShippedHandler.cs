@@ -1,9 +1,9 @@
 ﻿namespace ButtonShop.Infrastructure.Handlers;
 
 using ButtonShop.Application.Events;
+using ButtonShop.Infrastructure.BusinessMonitoring.Metrics.Interfaces;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Interfaces;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Models;
-using ButtonShop.Infrastructure.Monitoring.Metrics.Interfaces;
 using MediatR;
 
 internal sealed class OrderShippedHandler : INotificationHandler<OrderShipped>

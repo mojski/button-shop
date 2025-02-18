@@ -14,8 +14,8 @@ A brilliant inventor has developed a machine for making buttons. In his online s
 
 - [ ] finish dashboards
 - [ ] aspnet core dashboard
-- [ ] loki
-- [ ] open telemetry
+- [x] loki
+- [x] open telemetry
 - [ ] add persistence
 - [ ] add metabase
 - [ ] add validation
@@ -23,7 +23,7 @@ A brilliant inventor has developed a machine for making buttons. In his online s
 - [x] alerts
 - [ ] shop cilents simulations app
 - [x] test project
-- [ ] tracing
+- [x] tracing
 - [x] clean architecture
 - [ ] add wiki
 - [x] unit tests

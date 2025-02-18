@@ -4,11 +4,11 @@ A brilliant inventor has developed a machine for making buttons. In his online s
 
 
 ### Dashboard
-![dashboard example](/readme_assets/dashboard.png)
+![dashboard example](/doc/readme_assets/dashboard.png)
 
 ### Actual architecture
 
-![alt text](/readme_assets/arch.png)
+![alt text](/doc/readme_assets/scheme.png)
 
 ### TODO 
 

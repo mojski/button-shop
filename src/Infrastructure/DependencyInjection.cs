@@ -1,7 +1,8 @@
 ﻿namespace ButtonShop.Infrastructure;
 
 using ButtonShop.Domain.Interfaces;
-using ButtonShop.Infrastructure.Monitoring;
+using ButtonShop.Infrastructure.BusinessMonitoring;
+using ButtonShop.Infrastructure.OpenTelemetry;
 using ButtonShop.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,5 +16,6 @@ public static class DependencyInjection
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
         services.AddSingleton<IOrderRepository, OrderRepository>();
         services.AddBusinessMonitoring(configuration);
+        services.AddOpenTelemetry(configuration);
     }
 }

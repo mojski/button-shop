@@ -1,4 +1,4 @@
-﻿namespace ButtonShop.Infrastructure.Monitoring.Metrics;
+﻿namespace ButtonShop.Infrastructure.BusinessMonitoring.Metrics;
 
 public static class MetricConstants
 {

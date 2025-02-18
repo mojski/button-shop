@@ -2,9 +2,9 @@
 
 using ButtonShop.Application.Events;
 using ButtonShop.Domain.Entities;
+using ButtonShop.Infrastructure.BusinessMonitoring.Metrics.Interfaces;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Interfaces;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Models;
-using ButtonShop.Infrastructure.Monitoring.Metrics.Interfaces;
 using MediatR;
 
 internal sealed class OrderAddedHandler : INotificationHandler<OrderAdded>

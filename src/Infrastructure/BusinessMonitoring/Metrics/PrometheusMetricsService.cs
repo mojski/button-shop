@@ -1,6 +1,6 @@
-﻿namespace ButtonShop.Infrastructure.Monitoring.Metrics;
+﻿namespace ButtonShop.Infrastructure.BusinessMonitoring.Metrics;
 
-using ButtonShop.Infrastructure.Monitoring.Metrics.Interfaces;
+using ButtonShop.Infrastructure.BusinessMonitoring.Metrics.Interfaces;
 using Prometheus;
 
 internal sealed class PrometheusMetricsService : IMetricsService

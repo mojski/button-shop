@@ -5,20 +5,24 @@ using ButtonShop.Application.Events;
 using ButtonShop.Domain.Entities;
 using ButtonShop.Domain.Interfaces;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 public class AddOrderHandler : IRequestHandler<AddOrder>
 {
     private readonly IPublisher mediator;
     private readonly IOrderRepository repository;
+    private readonly ILogger<AddOrderHandler> logger;
 
-    public AddOrderHandler(IOrderRepository repository, IPublisher mediator)
+    public AddOrderHandler(IOrderRepository repository, IPublisher mediator, ILogger<AddOrderHandler> logger)
     {
         this.repository = repository;
         this.mediator = mediator;
+        this.logger = logger;
     }
 
     public async Task Handle(AddOrder request, CancellationToken cancellationToken)
     {
+        this.logger.LogInformation("AddOrder handle for id {id}", request.Id);
         var order = new Order(request.Id, request.CustomerName, request.ShippingAddress);
 
         foreach (var item in request.Items)

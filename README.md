@@ -8,11 +8,11 @@ Useful dashboard for app user with business statistics.
 ![dashboard example](/doc/readme_assets/dashboard.png)
 
 ### Technical dashboard
-Dashboard for admin contains ASP .NET app metrics, logs, traces and docker infrastructure metrics. 
+Dashboard for admin contains ASP .NET app metrics, logs, traces and docker infrastructure metrics.
+
+![alt text](/doc/readme_assets/tech-dashboard.png)
 
 Dashboard based on grafana repository dashboards:
-
-- [Cadvisor](https://grafana.com/grafana/dashboards/19792-cadvisor-dashboard/)
 
 - [prometheus-net](https://grafana.com/grafana/dashboards/10427-prometheus-net/)
 

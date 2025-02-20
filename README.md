@@ -27,11 +27,9 @@ All of them can be imported through the Grafana UI.
 ### TODO 
 
 - [ ] finish dashboards
-- [ ] aspnet core dashboard
+- [x] aspnet core dashboard
 - [x] loki
 - [x] open telemetry
-- [ ] add persistence
-- [ ] add metabase
 - [ ] add validation
 - [ ] Add request behavior to handle custom exceptions
 - [x] alerts

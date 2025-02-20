@@ -6,20 +6,20 @@ services:
   prometheus:
     image: prom/prometheus
     container_name: prometheus
+    restart: unless-stopped
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
     ports:
       - 9090:9090
     networks:
       - button-network
-
-    restart: unless-stopped
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prom_data:/prometheus
   grafana:
     image: grafana/grafana
     container_name: grafana
+    restart: unless-stopped
     depends_on:
       - prometheus
       - elasticsearch
@@ -27,7 +27,6 @@ services:
       - tempo
     ports:
       - 3000:3000
-    restart: unless-stopped
     networks:
       - button-network
     environment:
@@ -42,11 +41,11 @@ services:
       - ./grafana/provisioning/alerting:/etc/grafana/provisioning/alerting
   elasticsearch:
     image: elasticsearch:8.8.0
+    restart: unless-stopped
     container_name: elasticsearch
     ports:
       - 9200:9200
       - 9300:9300
-    restart: unless-stopped
     networks:
       - button-network
     environment:
@@ -55,8 +54,9 @@ services:
     volumes:
       - elastic_data:/usr/share/elasticsearch/data
   otel:
-    container_name: otel
     image: otel/opentelemetry-collector:latest
+    container_name: otel
+    restart: unless-stopped
     environment:
       - OTEL_LOG_LEVEL=debug
     command: --config=/etc/otel-collector-config.yml
@@ -75,8 +75,9 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
   loki:
-    container_name: loki
     image: grafana/loki:latest
+    container_name: loki
+    restart: unless-stopped
     ports:
       - "3100:3100"
       - "9095:9095"
@@ -87,6 +88,7 @@ services:
   tempo:
     image: grafana/tempo:latest
     container_name: tempo
+    restart: unless-stopped
     volumes:
       - ./tempo/tempo-config.yaml:/etc/tempo-config.yaml
       #- ./tempo-data:/tmp/tempo
@@ -98,6 +100,7 @@ services:
       - "9411:9411"  # Zipkin API
     networks:
       - button-network
+
 volumes:
   prom_data:
   elastic_data:

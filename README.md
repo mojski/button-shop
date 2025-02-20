@@ -3,8 +3,22 @@
 A brilliant inventor has developed a machine for making buttons. In his online store, he sells tons of buttons in three colors: red, green, and blue. On busy days, he wants to plan his work efficiently. He needs to visualize how many orders they have to process to adjust future button production and packing machine operations.
 
 
-### Dashboard
+### Business dashboard
+Useful dashboard for app user with business statistics. 
 ![dashboard example](/doc/readme_assets/dashboard.png)
+
+### Technical dashboard
+Dashboard for admin contains ASP .NET app metrics, logs, traces and docker infrastructure metrics. 
+
+Dashboard based on grafana repository dashboards:
+
+- [Cadvisor](https://grafana.com/grafana/dashboards/19792-cadvisor-dashboard/)
+
+- [prometheus-net](https://grafana.com/grafana/dashboards/10427-prometheus-net/)
+
+- [prometheus-net process metrics](https://grafana.com/grafana/dashboards/17039-prometheus-net-process-metrics/)
+
+All of them can be imported through the Grafana UI.
 
 ### Actual architecture
 
@@ -13,11 +27,9 @@ A brilliant inventor has developed a machine for making buttons. In his online s
 ### TODO 
 
 - [ ] finish dashboards
-- [ ] aspnet core dashboard
+- [x] aspnet core dashboard
 - [x] loki
 - [x] open telemetry
-- [ ] add persistence
-- [ ] add metabase
 - [ ] add validation
 - [ ] Add request behavior to handle custom exceptions
 - [x] alerts

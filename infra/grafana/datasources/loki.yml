@@ -4,5 +4,6 @@ datasources:
     type: loki
     access: proxy
     url: http://loki:3100
+    uid: loki-ds
     jsonData:
       timeout: 60

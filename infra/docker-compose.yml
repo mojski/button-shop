@@ -100,19 +100,6 @@ services:
       - "9411:9411"  # Zipkin API
     networks:
       - button-network
-  cadvisor:
-    image: gcr.io/cadvisor/cadvisor
-    container_name: cadvisor
-    restart: unless-stopped
-    ports:
-      - "8081:8080"
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-    network_mode: "bridge"
-    privileged: true
 
 volumes:
   prom_data:

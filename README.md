@@ -23,7 +23,7 @@ All of them can be imported through the Grafana UI.
 
 ### Actual architecture
 
-![alt text](/doc/readme_assets/scheme.png)
+![alt text](/doc/readme_assets/scheme2.png)
 
 ### Run demo
 

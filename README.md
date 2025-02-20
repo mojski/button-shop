@@ -5,6 +5,7 @@ A brilliant inventor has developed a machine for making buttons. In his online s
 
 ### Business dashboard
 Useful dashboard for app user with business statistics. 
+
 ![dashboard example](/doc/readme_assets/dashboard.png)
 
 ### Technical dashboard
@@ -23,6 +24,21 @@ All of them can be imported through the Grafana UI.
 ### Actual architecture
 
 ![alt text](/doc/readme_assets/scheme.png)
+
+### Run demo
+
+Run all in one docker compose:
+```bash
+cd src
+docker compose up -d
+```
+Or run infra docker compose and .NET app from VS or dotnet cli command:
+```bash
+cd infra
+docker compose up -d
+cd ../src/WebApi
+dotnet run # or just run it from VS
+```
 
 ### TODO 
 

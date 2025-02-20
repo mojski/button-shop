@@ -9,6 +9,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
       ELASTICSEARCH__ADDRESS: "http://elasticsearch:9200"
+      OPENTELEMETRY__ENDPOINT: "http://otel:4317"
     ports:
       - "5080:5080"
     networks:
@@ -32,6 +33,8 @@ services:
     depends_on:
       - prometheus
       - elasticsearch
+      - loki
+      - tempo
     ports:
       - 3000:3000
     restart: unless-stopped
@@ -40,10 +43,13 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=grafana
+      # provide webhook url if you want
+      - GF_DISCORD_WEBHOOK_URL=${GF_DISCORD_WEBHOOK_URL:-https://discord.com/api/webhooks/your-channel-id/token}
     volumes:
       - ../infra/grafana/datasources:/etc/grafana/provisioning/datasources
       - ../infra/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
       - ../infra/grafana/dashboards:/var/lib/grafana/dashboards
+      - ../infra/grafana/provisioning/alerting:/etc/grafana/provisioning/alerting
   elasticsearch:
     image: elasticsearch:8.8.0
     container_name: elasticsearch
@@ -58,6 +64,54 @@ services:
       - xpack.security.enabled=false
     volumes:
       - elastic_data:/usr/share/elasticsearch/data
+    
+  otel:
+    image: otel/opentelemetry-collector:latest
+    container_name: otel
+    restart: unless-stopped
+    environment:
+      - OTEL_LOG_LEVEL=debug
+    command: --config=/etc/otel-collector-config.yml
+    volumes:
+      - ../infra/otel/otel-collector-config.yml:/etc/otel-collector-config.yml
+    networks:
+      - button-network
+    ports:
+      - "1888:1888"
+      - "8888:8888"
+      - "8889:8889"
+      - "13133:13133"
+      - "4317:4317"
+      - "4318:4318"
+      - "55679:55679"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    restart: unless-stopped
+    ports:
+      - "3100:3100"
+      - "9095:9095"
+    environment:
+      - ALLOW_STRUCTURED_METADATA=true
+    networks:
+      - button-network
+  tempo:
+    image: grafana/tempo:latest
+    container_name: tempo
+    restart: unless-stopped
+    volumes:
+      - ../infra/tempo/tempo-config.yaml:/etc/tempo-config.yaml
+      #- ./tempo-data:/tmp/tempo
+    command: [ "-config.file=/etc/tempo-config.yaml" ]
+    ports:
+      - "3200:3200"  # grafana API
+      - "4319:4317"  # OTLP gRPC
+      - "4320:4318"  # OTLP HTTP
+      - "9411:9411"  # Zipkin API
+    networks:
+      - button-network
 volumes:
   prom_data:
   elastic_data:

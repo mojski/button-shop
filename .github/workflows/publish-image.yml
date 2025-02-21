@@ -5,6 +5,9 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout repo
@@ -17,7 +20,7 @@ jobs:
         run: echo "TAG=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/my-image:${{ env.TAG }} ../../src
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/my-image:${{ env.TAG }} ./src
 
       - name: Push Docker image to GHCR
         run: docker push ghcr.io/${{ github.repository_owner }}/my-image:${{ env.TAG }}

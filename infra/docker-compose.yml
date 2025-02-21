@@ -4,7 +4,7 @@ networks:
     driver: bridge
 services:
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:v3.2.0
     container_name: prometheus
     restart: unless-stopped
     command:
@@ -17,7 +17,7 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prom_data:/prometheus
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:11.5.2
     container_name: grafana
     restart: unless-stopped
     depends_on:
@@ -54,7 +54,7 @@ services:
     volumes:
       - elastic_data:/usr/share/elasticsearch/data
   otel:
-    image: otel/opentelemetry-collector:latest
+    image: otel/opentelemetry-collector:sha256-1daa4312b48312dbae2d543e67b77e897dd5d9c48e7651d1416cdb417026ad06.sig
     container_name: otel
     restart: unless-stopped
     environment:
@@ -75,7 +75,7 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
   loki:
-    image: grafana/loki:latest
+    image: grafana/loki:3.4
     container_name: loki
     restart: unless-stopped
     ports:
@@ -86,7 +86,7 @@ services:
     networks:
       - button-network
   tempo:
-    image: grafana/tempo:latest
+    image: grafana/tempo:main-50a9daf
     container_name: tempo
     restart: unless-stopped
     volumes:

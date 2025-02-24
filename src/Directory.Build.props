@@ -1,0 +1,14 @@
+<Project>
+
+  <PropertyGroup>
+    <Authors>MM</Authors>
+    <ProductName>.NET and Opentelemetry Poc</ProductName>
+    <TargetFramework>net8.0</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>IDE0290;S112;S1125;S1135;S2094;S6703;S2583;CS0612;</NoWarn>
+  </PropertyGroup>
+
+</Project>

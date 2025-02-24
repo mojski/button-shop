@@ -4,8 +4,9 @@ networks:
 
 services:
   buttonshop:
-    build: .
-    image: buttonshop:local
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
       ELASTICSEARCH__ADDRESS: "http://elasticsearch:9200"

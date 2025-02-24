@@ -2,6 +2,9 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
+COPY Directory.Build.props Directory.Build.props
+COPY Directory.Packages.props Directory.Packages.props
+
 COPY WebApi/ButtonShop.WebApi.csproj WebApi/ButtonShop.WebApi.csproj
 COPY Application/ButtonShop.Application.csproj Application/ButtonShop.Application.csproj
 COPY Domain/ButtonShop.Domain.csproj Domain/ButtonShop.Domain.csproj

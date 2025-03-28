@@ -10,5 +10,7 @@ internal sealed class OpenTelemetryOptions
     public string AuthorisationHeader { get; init; } = "x-otlp-api-key";
 
     public string Endpoint { get; init; } = "http://localhost:4317";
+    public string HealthCheckEndpoint { get; init; } = "http://localhost:13133/health";
+
     public OtlpExportProtocol Protocol { get; init; } = OtlpExportProtocol.Grpc;
 }

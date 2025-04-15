@@ -20,26 +20,27 @@ public class AddOrderHandler : IRequestHandler<AddOrder>
         this.logger = logger;
     }
 
-    public async Task Handle(AddOrder request, CancellationToken cancellationToken)
+    public Task Handle(AddOrder request, CancellationToken cancellationToken)
     {
-        this.logger.LogInformation("AddOrder handle for id {id}", request.Id);
-        var order = new Order(request.Id, request.CustomerName, request.ShippingAddress);
+        throw new NotImplementedException();
+        //this.logger.LogInformation("AddOrder handle for id {id}", request.Id);
+        //var order = new Order(request.Id, request.CustomerName, request.ShippingAddress);
 
-        foreach (var item in request.Items)
-        {
-            order.AddItems(item.Key, item.Value);
-        }
+        //foreach (var item in request.Items)
+        //{
+        //    order.AddItems(item.Key, item.Value);
+        //}
 
-        await this.repository.SaveOrder(order, cancellationToken);
+        //await this.repository.SaveOrder(order, cancellationToken);
 
-        var notification = new OrderAdded
-        {
-            Id = order.Id,
-            Items = order.Items,
-            Longitude = request.Longitude,
-            Latitude = request.Latitude,
-        };
+        //var notification = new OrderAdded
+        //{
+        //    Id = order.Id,
+        //    Items = order.Items,
+        //    Longitude = request.Longitude,
+        //    Latitude = request.Latitude,
+        //};
 
-        await this.mediator.Publish(notification, cancellationToken);
+        //await this.mediator.Publish(notification, cancellationToken);
     }
 }

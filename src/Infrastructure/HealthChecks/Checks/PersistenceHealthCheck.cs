@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
-
-namespace ButtonShop.Infrastructure.HealthChecks.Checks;
+﻿namespace ButtonShop.Infrastructure.HealthChecks.Checks;
 
 internal sealed class PersistenceHealthCheck : IHealthCheck
 {

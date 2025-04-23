@@ -5,10 +5,6 @@ using ButtonShop.Infrastructure.BusinessMonitoring;
 using ButtonShop.Infrastructure.HealthChecks;
 using ButtonShop.Infrastructure.OpenTelemetry;
 using ButtonShop.Infrastructure.Services;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 public static class DependencyInjection
 {

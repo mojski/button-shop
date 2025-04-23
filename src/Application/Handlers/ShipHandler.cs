@@ -3,8 +3,6 @@
 using ButtonShop.Application.Commands;
 using ButtonShop.Application.Events;
 using ButtonShop.Domain.Interfaces;
-using MediatR;
-using Microsoft.Extensions.Logging;
 
 public sealed class ShipHandler : IRequestHandler<Ship>
 {

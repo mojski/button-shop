@@ -2,7 +2,6 @@ using ButtonShop.Application;
 using ButtonShop.Infrastructure;
 using ButtonShop.Infrastructure.OpenTelemetry;
 using ButtonShop.WebApi.Filters;
-using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();

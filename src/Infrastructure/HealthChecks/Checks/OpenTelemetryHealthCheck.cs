@@ -1,7 +1,6 @@
 ﻿using ButtonShop.Infrastructure.OpenTelemetry;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Text.Json;
+using HealthStatus = Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus;
 
 namespace ButtonShop.Infrastructure.HealthChecks.Checks;
 

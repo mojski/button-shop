@@ -15,4 +15,12 @@
     <ProjectReference Include="..\Infrastructure\ButtonShop.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="MediatR" />
+    <Using Include="Microsoft.AspNetCore.Mvc" />
+    <Using Include="Microsoft.AspNetCore.Mvc.Filters" />
+    <Using Include="Prometheus" />
+    <Using Include="System.Net.Mime" />
+  </ItemGroup>
+
 </Project>

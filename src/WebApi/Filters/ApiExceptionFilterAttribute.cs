@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System.Net.Mime;
-
-namespace ButtonShop.WebApi.Filters;
+﻿namespace ButtonShop.WebApi.Filters;
 
 internal sealed class ExceptionFilter : IExceptionFilter
 {

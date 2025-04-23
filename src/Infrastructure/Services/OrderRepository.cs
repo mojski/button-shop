@@ -2,7 +2,6 @@
 
 using ButtonShop.Domain.Entities;
 using ButtonShop.Domain.Interfaces;
-using Microsoft.Extensions.Logging;
 
 internal class OrderRepository : IOrderRepository
 {

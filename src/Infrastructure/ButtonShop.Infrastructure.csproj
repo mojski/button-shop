@@ -18,6 +18,28 @@
     <ProjectReference Include="..\Application\ButtonShop.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="Elastic.Clients.Elasticsearch" />
+    <Using Include="MediatR" />
+    <Using Include="Microsoft.AspNetCore.Builder" />
+    <Using Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" />
+    <Using Include="Microsoft.AspNetCore.Http" />
+    <Using Include="Microsoft.AspNetCore.Routing" />
+    <Using Include="Microsoft.Extensions.Configuration" />
+    <Using Include="Microsoft.Extensions.DependencyInjection" />
+    <Using Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
+    <Using Include="Microsoft.Extensions.Logging" />
+    <Using Include="OpenTelemetry.Exporter" />
+    <Using Include="OpenTelemetry.Logs" />
+    <Using Include="OpenTelemetry.Metrics" />
+    <Using Include="OpenTelemetry.Resources" />
+    <Using Include="OpenTelemetry.Trace" />
+    <Using Include="Prometheus" />
+    <Using Include="System.Net.Mime" />
+    <Using Include="System.Reflection" />
+    <Using Include="System.Text.Json" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

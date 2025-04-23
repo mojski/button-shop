@@ -2,7 +2,6 @@
 
 using ButtonShop.Infrastructure.Monitoring.Elastic.Interfaces;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Models;
-using global::Elastic.Clients.Elasticsearch;
 
 internal sealed class ElasticSearchService : IElasticSearchService
 {

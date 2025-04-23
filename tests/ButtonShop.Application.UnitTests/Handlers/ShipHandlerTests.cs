@@ -3,9 +3,7 @@ using ButtonShop.Application.Events;
 using ButtonShop.Application.Handlers;
 using ButtonShop.Domain.Entities;
 using ButtonShop.Domain.Interfaces;
-using FluentAssertions;
-using MediatR;
-using NSubstitute;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace ButtonShop.Application.UnitTests.Handlers;
 
@@ -17,12 +15,13 @@ public class ShipHandlerTests
 
     private IOrderRepository repository = Substitute.For<IOrderRepository>();
     private IPublisher mediator = Substitute.For<IPublisher>();
+    private NullLogger<ShipHandler> logger = new();
     private ShipHandler? handler;
 
     [TestInitialize]
     public void Setup()
     {
-        this.handler = new ShipHandler(this.repository, this.mediator);
+        this.handler = new ShipHandler(this.repository, this.mediator, this.logger);
     }
 
     [TestMethod]

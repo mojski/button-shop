@@ -2,8 +2,6 @@
 
 using ButtonShop.Application.Commands;
 using ButtonShop.WebApi.Filters;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
 [Route("[controller]/[action]")]
 [ApiController]

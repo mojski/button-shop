@@ -1,10 +1,9 @@
 ﻿using ButtonShop.Application.Events;
-using ButtonShop.Domain.Entities;
+using ButtonShop.Infrastructure.BusinessMonitoring.Metrics.Interfaces;
 using ButtonShop.Infrastructure.Handlers;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Interfaces;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Models;
-using ButtonShop.Infrastructure.Monitoring.Metrics.Interfaces;
-using NSubstitute;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace ButtonShop.Infrastructure.UnitTests.Handlers;
 
@@ -16,12 +15,13 @@ public sealed class OrderShippedHandlerTests
 
     private IElasticSearchService elasticSearchService = Substitute.For<IElasticSearchService>();
     private IMetricsService metricsService = Substitute.For<IMetricsService>();
+    private NullLogger<OrderShippedHandler> logger = new();
     private OrderShippedHandler? handler;
 
     [TestInitialize]
     public void Setup()
     {
-        this.handler = new OrderShippedHandler(this.metricsService, this.elasticSearchService);
+        this.handler = new OrderShippedHandler(this.metricsService, this.elasticSearchService, this.logger);
     }
 
     [TestMethod]

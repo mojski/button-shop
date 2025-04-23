@@ -2,8 +2,6 @@
 using ButtonShop.Infrastructure.Monitoring.Elastic.Interfaces;
 using ButtonShop.Infrastructure.BusinessMonitoring.Metrics;
 using ButtonShop.Infrastructure.BusinessMonitoring.Metrics.Interfaces;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace ButtonShop.Infrastructure.BusinessMonitoring;
 

@@ -1,8 +1,5 @@
 ﻿namespace ButtonShop.Application.Commands;
 
-using System.Text.Json.Serialization;
-using MediatR;
-
 public sealed record class AddOrder : IRequest
 {
     [JsonPropertyName("customerName")]

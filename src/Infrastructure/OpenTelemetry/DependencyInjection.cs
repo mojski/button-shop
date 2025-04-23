@@ -1,13 +1,4 @@
-﻿
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using OpenTelemetry.Logs;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
-
-namespace ButtonShop.Infrastructure.OpenTelemetry;
+﻿namespace ButtonShop.Infrastructure.OpenTelemetry;
 
 public static class DependencyInjection
 {

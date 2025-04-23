@@ -1,7 +1,6 @@
 ﻿namespace ButtonShop.Application.Events;
 
 using ButtonShop.Domain.Entities;
-using MediatR;
 
 public sealed record OrderAdded : INotification
 {

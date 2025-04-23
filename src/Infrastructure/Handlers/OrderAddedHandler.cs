@@ -5,8 +5,6 @@ using ButtonShop.Domain.Entities;
 using ButtonShop.Infrastructure.BusinessMonitoring.Metrics.Interfaces;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Interfaces;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Models;
-using MediatR;
-using Microsoft.Extensions.Logging;
 
 internal sealed class OrderAddedHandler : INotificationHandler<OrderAdded>
 {

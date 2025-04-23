@@ -1,7 +1,4 @@
-﻿
-using OpenTelemetry.Exporter;
-
-namespace ButtonShop.Infrastructure.OpenTelemetry;
+﻿namespace ButtonShop.Infrastructure.OpenTelemetry;
 
 internal sealed class OpenTelemetryOptions
 {

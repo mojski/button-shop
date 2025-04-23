@@ -15,7 +15,7 @@ $body = @{
             } | ConvertTo-Json
 
 $random = Get-Random -Maximum 10
-Start-Sleep -Duration (New-TimeSpan -Seconds $random)
+Start-Sleep -Duration -Seconds $random
 Invoke-RestMethod 'http://localhost:5080/orders/ship' -Method 'POST' -Headers $headers -Body $body
 Write-Output "Order shipped"
 }

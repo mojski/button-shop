@@ -1,6 +1,5 @@
 ﻿using ButtonShop.Domain.Entities;
 using ButtonShop.Domain.Exceptions;
-using FluentAssertions;
 
 namespace ButtonShop.Domain.UnitTests.Buttons.Entities;
 
@@ -9,7 +8,7 @@ public class OrderTests
 {
     private static string CUSTOMER_NAME = "CustomerName";
     private static string CUSTOMER_ADDRESS = "Address";
-    private static string INVALID_COLOR = "Purple";
+    private static string INVALID_COLOR = "Deep Purple";
 
     private static readonly Guid id = Guid.NewGuid();
 

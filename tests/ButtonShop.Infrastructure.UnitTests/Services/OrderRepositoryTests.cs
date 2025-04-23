@@ -1,6 +1,8 @@
 ﻿using ButtonShop.Domain.Entities;
+using ButtonShop.Infrastructure.Handlers;
 using ButtonShop.Infrastructure.Services;
 using FluentAssertions;
+using Microsoft.Extensions.Logging.Abstractions;
 
 
 namespace ButtonShop.Infrastructure.UnitTests.Services;
@@ -10,8 +12,14 @@ public class OrderRepositoryTests
 {
     private static string CUSTOMER_NAME = "CustomerName";
     private static string CUSTOMER_ADDRESS = "Address";
+    private NullLogger<OrderRepository> logger = new();
 
-    private OrderRepository repository = new OrderRepository();
+    private OrderRepository repository;
+
+    public OrderRepositoryTests()
+    {
+        this.repository = new OrderRepository(this.logger);
+    }
 
     [TestMethod]
     public void GetOrder_Should_Return_Order_When_Order_Exists()

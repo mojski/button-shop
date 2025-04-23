@@ -1,10 +1,4 @@
 ﻿using ButtonShop.Infrastructure.HealthChecks.Checks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace ButtonShop.Infrastructure.HealthChecks;
 

@@ -1,7 +1,7 @@
 ﻿using ButtonShop.Application.Commands;
 using ButtonShop.Domain.Entities;
 
-namespace ButtonShop.Application.Validators;
+namespace ButtonShop.Application.Validation.Validators;
 
 internal sealed class AddOrderValidator : AbstractValidator<AddOrder>
 {
@@ -16,13 +16,13 @@ internal sealed class AddOrderValidator : AbstractValidator<AddOrder>
     private static string INVALID_LONGITUDE_CODE = "invalid_button_color";
     private static string INVALID_LONGITUDE_MESSAGE = "We sell only:";
     private static string INVALID_LATITUDE_CODE = "invalid_button_color";
-    private static string INVALID_LATITUDE_MESSAGE = "We sell only:";
+    private static string INVALID_LATITUDE_MESSAGE = "We sell only";
 
 
     private static readonly HashSet<string> allowedKeys = Enum.GetNames(typeof(ButtonColors)).ToHashSet();
     public AddOrderValidator()
     {
-        this.RuleFor(request => request.CustomerName)
+        RuleFor(request => request.CustomerName)
             .NotEmpty()
             .MinimumLength(3)
             .WithErrorCode(CUSTOMER_INVALID_NAME_CODE)
@@ -38,7 +38,7 @@ internal sealed class AddOrderValidator : AbstractValidator<AddOrder>
                 .WithMessage($"{ITEM_INVALID_KEY_MESSAGE_TEMPLATE}: {string.Join(", ", allowedKeys)}");
 
         RuleFor(x => x.Latitude)
-            .NotEmpty().WithMessage("Latitude nie może być puste.")
+            .NotEmpty()
             .Must(BeValidLatitude)
             .WithErrorCode(INVALID_LATITUDE_CODE)
             .WithMessage(INVALID_LATITUDE_MESSAGE);

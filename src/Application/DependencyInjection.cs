@@ -1,4 +1,6 @@
-﻿namespace ButtonShop.Application;
+﻿using ButtonShop.Application.Validation;
+
+namespace ButtonShop.Application;
 
 public static class DependencyInjection
 {
@@ -6,5 +8,7 @@ public static class DependencyInjection
     {
         var assembly = Assembly.GetExecutingAssembly();
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
+        services.AddValidatorsFromAssembly(assembly, includeInternalTypes: true);
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
     }
 }

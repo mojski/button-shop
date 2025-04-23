@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
     <PackageReference Include="MediatR" />
   </ItemGroup>
 
@@ -12,6 +13,7 @@
 
   <ItemGroup>
     <Using Include="FluentValidation" />
+    <Using Include="FluentValidation.Results" />
     <Using Include="MediatR" />
     <Using Include="Microsoft.Extensions.DependencyInjection" />
     <Using Include="Microsoft.Extensions.Logging" />

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Using Include="MediatR" />
+    <Using Include="Microsoft.AspNetCore.Diagnostics" />
     <Using Include="Microsoft.AspNetCore.Mvc" />
     <Using Include="Microsoft.AspNetCore.Mvc.Filters" />
     <Using Include="Prometheus" />

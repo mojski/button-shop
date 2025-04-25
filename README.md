@@ -46,8 +46,8 @@ dotnet run # or just run it from VS
 - [x] aspnet core dashboard
 - [x] loki
 - [x] open telemetry
-- [ ] add validation
-- [ ] Add request behavior to handle custom exceptions
+- [x] add validation
+- [x] Add request behavior to handle custom exceptions
 - [x] alerts
 - [ ] shop cilents simulations app
 - [x] test project

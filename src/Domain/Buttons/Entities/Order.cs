@@ -24,9 +24,8 @@ public sealed class Order
         if (Enum.TryParse(typeof(ButtonColors), color, ignoreCase: true, out var result) is false)
         {
             throw new ButtonColorNotSupportedException(color);
-            // TODO add exception handling to request pipeline
         }
-
+        
         var parsedColor = (ButtonColors)result;
 
         if (this.Items.ContainsKey(parsedColor))

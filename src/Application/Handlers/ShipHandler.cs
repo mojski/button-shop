@@ -2,6 +2,7 @@
 
 using ButtonShop.Application.Commands;
 using ButtonShop.Application.Events;
+using ButtonShop.Application.Exceptions;
 using ButtonShop.Domain.Interfaces;
 
 public sealed class ShipHandler : IRequestHandler<Ship>
@@ -20,13 +21,13 @@ public sealed class ShipHandler : IRequestHandler<Ship>
     public async Task Handle(Ship request, CancellationToken cancellationToken)
     {
         this.logger.LogInformation("Ship handle for id {id}", request.OrderId);
-
+        var zero = 0;
+        var tmp = 4 / zero;
         var order = this.repository.GetOrder(request.OrderId);
 
         if (order is null)
         {
-            await Task.CompletedTask;
-            // TODO throw application error
+            throw new OrderNotFoundException(request.OrderId);
         }
 
         order!.Ship();

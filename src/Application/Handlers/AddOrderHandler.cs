@@ -20,7 +20,6 @@ public class AddOrderHandler : IRequestHandler<AddOrder>
 
     public async Task Handle(AddOrder request, CancellationToken cancellationToken)
     {
-        //throw new NotImplementedException();
         this.logger.LogInformation("AddOrder handle for id {id}", request.Id);
         var order = new Order(request.Id, request.CustomerName, request.ShippingAddress);
 

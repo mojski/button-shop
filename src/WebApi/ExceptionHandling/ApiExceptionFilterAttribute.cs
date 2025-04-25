@@ -1,30 +1,37 @@
-﻿using ButtonShop.Application.Validation;
+﻿using ButtonShop.Application.Exceptions;
+using ButtonShop.Application.Validation;
 
 namespace ButtonShop.WebApi.ExceptionHandling;
 
 internal sealed class ApiExceptionFilterAttribute : ExceptionFilterAttribute
-{
+{   
     private readonly ILogger<ApiExceptionFilterAttribute> logger;
 
     public ApiExceptionFilterAttribute(ILogger<ApiExceptionFilterAttribute> logger)
-        => this.logger = logger;
+    {
+        this.logger = logger;
+    }
 
     public override void OnException(ExceptionContext context)
     {
-        this.logger.LogError(context.Exception, "{Message}", context.Exception.Message);
-
         switch (context.Exception)
         {
+            case NotFoundException notFoundException:
+                HandleNotFoundException(context, notFoundException);
+
+                break;
+
             case ValidationException validationException:
                 HandleValidationException(context, validationException);
 
                 break;
+
             default:
+                this.logger.LogError(context.Exception, "{Message}", context.Exception.Message);
                 HandleUnknownException(context);
 
                 break;
         }
-
         base.OnException(context);
     }
 
@@ -42,15 +49,31 @@ internal sealed class ApiExceptionFilterAttribute : ExceptionFilterAttribute
             Response = exception.Errors,
         };
 
-        context.Result = new ObjectResult(response)
+        context.Result = GetResult(response, StatusCodes.Status400BadRequest);
+        context.ExceptionHandled = true;
+    }
+
+    private static void HandleNotFoundException(ExceptionContext context, NotFoundException exception)
+    {
+        var response = new
+        {
+            exception.Code,
+            Error = exception.Message,
+        };
+
+        context.Result = GetResult(response, StatusCodes.Status404NotFound);
+        context.ExceptionHandled = true;
+    }
+
+    private static ObjectResult GetResult(object response, int statusCode)
+    {
+        return new ObjectResult(response)
         {
             ContentTypes =
             [
                 MediaTypeNames.Application.Json,
             ],
-            StatusCode = StatusCodes.Status400BadRequest,
+            StatusCode = statusCode,
         };
-
-        context.ExceptionHandled = true;
     }
 }

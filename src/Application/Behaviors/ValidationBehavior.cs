@@ -1,7 +1,7 @@
-﻿
-using System.Data;
+﻿using System.Data;
+using ValidationException = ButtonShop.Application.Validation.ValidationException;
 
-namespace ButtonShop.Application.Validation
+namespace ButtonShop.Application.Behaviors
 {
     internal sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IBaseRequest
@@ -13,11 +13,11 @@ namespace ButtonShop.Application.Validation
 
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
-            if (this.requestValidators.Any())
+            if (requestValidators.Any())
             {
                 var fluentValidationContext = new ValidationContext<TRequest>(request);
                 
-                var validationResults = this.requestValidators.Select(v => v.ValidateAsync(fluentValidationContext, cancellationToken));
+                var validationResults = requestValidators.Select(v => v.ValidateAsync(fluentValidationContext, cancellationToken));
 
                 await EvaluateResults(validationResults);
             }
@@ -35,7 +35,7 @@ namespace ButtonShop.Application.Validation
                 .ToList();
 
             if (failures.Count > 0)
-            {
+            {   
                 throw new ValidationException(failures);
             }
         }

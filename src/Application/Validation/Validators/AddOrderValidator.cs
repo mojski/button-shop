@@ -10,13 +10,13 @@ internal sealed class AddOrderValidator : AbstractValidator<AddOrder>
 
     private static string ITEM_INVALID_KEY_CODE = "invalid_button_color";
     private static string ITEM_INVALID_KEY_MESSAGE_TEMPLATE = "We sell only:";
-    private static string INVALID_ITEM_QUANTITY_CODE = "invalid_button_color";
-    private static string INVALID_ITEM_QUANTITY_MESSAGE = "We sell only:";
+    private static string INVALID_ITEM_QUANTITY_CODE = "invalid_item_qty";
+    private static string INVALID_ITEM_QUANTITY_MESSAGE = "Invalid item quantity";
 
-    private static string INVALID_LONGITUDE_CODE = "invalid_button_color";
-    private static string INVALID_LONGITUDE_MESSAGE = "We sell only:";
-    private static string INVALID_LATITUDE_CODE = "invalid_button_color";
-    private static string INVALID_LATITUDE_MESSAGE = "We sell only";
+    private static string INVALID_LONGITUDE_CODE = "invalid_longitude";
+    private static string INVALID_LONGITUDE_MESSAGE = "Passed longitude is invalid";
+    private static string INVALID_LATITUDE_CODE = "invalid_latitude";
+    private static string INVALID_LATITUDE_MESSAGE = "Passed latitude is invalid";
 
 
     private static readonly HashSet<string> allowedKeys = Enum.GetNames(typeof(ButtonColors)).ToHashSet();

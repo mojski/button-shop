@@ -19,7 +19,7 @@
             this.Errors = errors;
         }
 
-        public override string Code => "Validation failed";
+        public override string Code => ValidationConstants.VALIDATION_ERROR_CODE;
         public IDictionary<string, string[]> Errors { get; } = new Dictionary<string, string[]>();
     }
 }

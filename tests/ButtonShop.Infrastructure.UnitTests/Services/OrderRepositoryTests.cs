@@ -1,5 +1,4 @@
 ﻿using ButtonShop.Domain.Entities;
-using ButtonShop.Infrastructure.Handlers;
 using ButtonShop.Infrastructure.Services;
 using FluentAssertions;
 using Microsoft.Extensions.Logging.Abstractions;

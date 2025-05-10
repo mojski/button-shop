@@ -31,8 +31,8 @@ internal sealed class OrderAddedHandler : INotificationHandler<OrderAdded>
 
         var geolocation = new OrderGeoLoc
         {
-            Longitude = notification.Longitude,
-            Latitude = notification.Latitude,
+            Longitude = $"{notification.Longitude}",
+            Latitude = $"{notification.Latitude}",
             Quantity = notification.Items.Sum(item => item.Value),
         };
 

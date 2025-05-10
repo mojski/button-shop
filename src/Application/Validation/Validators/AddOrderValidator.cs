@@ -48,18 +48,15 @@ internal sealed class AddOrderValidator : AbstractValidator<AddOrder>
             .Must(BeValidLongitude)
             .WithErrorCode(INVALID_LONGITUDE_CODE)
             .WithMessage(INVALID_LONGITUDE_MESSAGE);
-
-
     }
 
-    private bool BeValidLatitude(string value)
+    private bool BeValidLatitude(double value)
     {
-        return double.TryParse(value, out var result) && result >= -90 && result <= 90;
+        return value >= -90 && value <= 90;
     }
 
-    private bool BeValidLongitude(string value)
+    private bool BeValidLongitude(double value)
     {
-        return double.TryParse(value, out var result) && result >= -180 && result <= 180;
+        return value >= -180 && value <= 180;
     }
 }
-

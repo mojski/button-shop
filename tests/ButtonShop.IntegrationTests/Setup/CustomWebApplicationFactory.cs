@@ -25,9 +25,9 @@ public class CustomWebApplicationFactory<TEntryPoint> : WebApplicationFactory<TE
                 .AddEnvironmentVariables(prefix: "ButtonShop_")
                 .Build();
 
-        
-        var removeService = services.Single(s => s.ImplementationType == typeof(ElasticSearchService));
-        services.Remove(removeService);
+        // removing services
+        //var removeService = services.Single(s => s.ImplementationType == typeof(Service));
+        //services.Remove(removeService);
 
         services.AddSingleton<IElasticSearchService, FakeElasticSearchService>();
     }

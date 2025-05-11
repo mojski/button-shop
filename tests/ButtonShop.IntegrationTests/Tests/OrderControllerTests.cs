@@ -8,7 +8,7 @@ namespace ButtonShop.IntegrationTests.Tests;
 [TestClass]
 public sealed class OrderControllerTests : IDisposable
 {
-    private const string ADD_ORDER_ENDPOINT = "/orders/add";
+    private static string ADD_ORDER_ENDPOINT = "/orders/add";
     private static string CUSTOMER_NAME = "CustomerName";
     private static string CUSTOMER_ADDRESS = "Address";
     private static double LONGITUDE = 50.0;

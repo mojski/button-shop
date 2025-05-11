@@ -1,4 +1,5 @@
-﻿using ButtonShop.Application.Exceptions;
+﻿using System.Runtime.CompilerServices;
+using ButtonShop.Application.Exceptions;
 using ButtonShop.Application.Validation;
 
 namespace ButtonShop.WebApi.ExceptionHandling;
@@ -18,11 +19,12 @@ internal sealed class ApiExceptionFilterAttribute : ExceptionFilterAttribute
         {
             case NotFoundException notFoundException:
                 HandleNotFoundException(context, notFoundException);
-
+                this.logger.LogInformation("Resource not found for Id:{Id}, with message:{Message}", notFoundException.Id, notFoundException.Message);
                 break;
 
             case ValidationException validationException:
                 HandleValidationException(context, validationException);
+                this.logger.LogInformation("Validation errors occured:{Message}", validationException.Message);
 
                 break;
 

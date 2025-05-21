@@ -1,10 +1,9 @@
 ﻿using HealthStatus = Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus;
 
-namespace ButtonShop.Infrastructure.HealthChecks.Checks;
+namespace ButtonShop.Infrastructure.HealthChecks.Checks.System;
 
 internal sealed class MemoryHealthCheck : IHealthCheck
 {
-    public static string PATH = "memory_health_check";
     public static string ALOCATED_MEMORY = "allocatedBytes";
     public static string GEN0_COLLECTIONS = "gen0Collections";
     public static string GEN1_COLLECTIONS = "gen1Collections";
@@ -25,7 +24,7 @@ internal sealed class MemoryHealthCheck : IHealthCheck
             { NUMBER_OF_GC_GENERATIONS, GC.MaxGeneration },
         };
 
-        var status = (allocated < MEMORY_THRESHOLD) ? HealthStatus.Healthy : HealthStatus.Unhealthy;
+        var status = allocated < MEMORY_THRESHOLD ? HealthStatus.Healthy : HealthStatus.Unhealthy;
         var healthStatus = new HealthCheckResult(status, description: string.Empty, exception: null, data: data);
 
         return Task.FromResult(healthStatus);

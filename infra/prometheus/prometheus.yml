@@ -5,3 +5,20 @@ scrape_configs:
   - job_name: 'buttonstats'
     static_configs:
       - targets: ['host.docker.internal:5080'] # scraps outside docker
+  - job_name: 'health-endpoints'
+    metrics_path: /probe
+    params:
+      module: [http_healthz]
+    static_configs:
+      - targets:
+          - http://host.docker.internal:5080/health
+          - http://host.docker.internal:5080/health/otel
+          - http://host.docker.internal:5080/health/elasticsearch
+          - http://host.docker.internal:5080/health/system
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox-exporter:9115

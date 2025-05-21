@@ -19,7 +19,7 @@ internal sealed class AddOrderValidator : AbstractValidator<AddOrder>
     private static string INVALID_LATITUDE_MESSAGE = "Passed latitude is invalid";
 
 
-    private static readonly HashSet<string> allowedKeys = Enum.GetNames(typeof(ButtonColors)).ToHashSet();
+    private static readonly HashSet<string> allowedKeys = Enum.GetNames(typeof(ButtonColors)).ToHashSet(StringComparer.OrdinalIgnoreCase);
     public AddOrderValidator()
     {
         RuleFor(request => request.CustomerName)

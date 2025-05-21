@@ -58,8 +58,8 @@ internal sealed class ElasticSearchService : IElasticSearchService
             {
                 cfg.Mappings(map => map.Properties<OrderGeoLoc>(p => p
                     .Keyword(k => k.Id!)
-                    .Text(t => t.Longitude)
-                    .Text(t => t.Latitude)
+                    .DoubleNumber(t => t.Longitude)
+                    .DoubleNumber(t => t.Latitude)
                     .IntegerNumber(n => n.Quantity)
                     .GeoPoint(g => g.GeoLocation)
                     .Date(d => d.Timestamp)));

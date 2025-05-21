@@ -25,6 +25,14 @@ All of them can be imported through the Grafana UI.
 
 ![alt text](/doc/readme_assets/arch.png)
 
+### Healthchecks
+
+![](doc/readme_assets/image-2025-05-21-16-34-12.png)
+
+There are two options. Checking healthchecks directly or via web api. The second solution provides a real check of whether the application can connect to a given service. Additionally, it allows for convenient use of uniform responses by the balckbox service. 
+
+![](doc/readme_assets/image-2025-05-21-16-57-56.png)
+
 ### Run demo
 
 Run all in one docker compose:
@@ -53,7 +61,6 @@ dotnet run # or just run it from VS
 - [x] test project
 - [x] tracing
 - [x] clean architecture
-- [ ] add wiki
 - [x] unit tests
 - [x] add ci/cd basic jobs
 - [ ] kubernetes

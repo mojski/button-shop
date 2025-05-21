@@ -64,22 +64,22 @@ services:
     networks:
       - button-network
     ports:
-      - "1888:1888"
-      - "8888:8888"
-      - "8889:8889"
+      # - "1888:1888"
+      # - "8888:8888"
+      # - "8889:8889"
       - "13133:13133"
       - "4317:4317"
-      - "4318:4318"
-      - "55679:55679"
+      # - "4318:4318"
+      # - "55679:55679"
     extra_hosts:
       - host.docker.internal:host-gateway
   loki:
     image: grafana/loki:${LOKI_TAG:-3.4}
     container_name: loki
     restart: unless-stopped
-    ports:
-      - "3100:3100"
-      - "9095:9095"
+    # ports:
+    #   - "3100:3100"
+    #   - "9095:9095"
     environment:
       - ALLOW_STRUCTURED_METADATA=true
     networks:
@@ -92,13 +92,23 @@ services:
       - ./tempo/tempo-config.yaml:/etc/tempo-config.yaml
       #- ./tempo-data:/tmp/tempo
     command: [ "-config.file=/etc/tempo-config.yaml" ]
-    ports:
-      - "3200:3200"  # grafana API
-      - "4319:4317"  # OTLP gRPC
-      - "4320:4318"  # OTLP HTTP
-      - "9411:9411"  # Zipkin API
+    # ports:
+    #   - "3200:3200"  # grafana API
+    #   - "4319:4317"  # OTLP gRPC
+    #   - "4320:4318"  # OTLP HTTP
+    #   - "9411:9411"  # Zipkin API
     networks:
       - button-network
+  blackbox-exporter:
+    image: prom/blackbox-exporter
+    container_name: blackbox-exporter
+    restart: unless-stopped
+    ports:
+      - "9115:9115"
+    networks:
+      - button-network
+    volumes:
+      - ./prometheus/blackbox.yml:/etc/blackbox_exporter/config.yml
 
 volumes:
   prom_data:

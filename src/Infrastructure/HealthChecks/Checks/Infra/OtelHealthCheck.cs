@@ -1,17 +1,15 @@
 ﻿using ButtonShop.Infrastructure.OpenTelemetry;
-using System.Text.Json;
-using HealthStatus = Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus;
 
-namespace ButtonShop.Infrastructure.HealthChecks.Checks;
+namespace ButtonShop.Infrastructure.HealthChecks.Checks.Infra;
 
-internal class OpenTelemetryHealthCheck : IHealthCheck
+internal class OtelHealthCheck : IHealthCheck
 {
-    public static string PATH = "open_telemetry_health_check";
+    public static string PATH = "otel";
     private static string desiredHealthStatus = "Server available";
     private readonly IConfiguration configuration;
     private readonly IHttpClientFactory httpClientFactory;
 
-    public OpenTelemetryHealthCheck(IConfiguration configuration, IHttpClientFactory httpClientFactory)
+    public OtelHealthCheck(IConfiguration configuration, IHttpClientFactory httpClientFactory)
     {
         this.configuration = configuration;
         this.httpClientFactory = httpClientFactory;
@@ -36,14 +34,22 @@ internal class OpenTelemetryHealthCheck : IHealthCheck
                 PropertyNameCaseInsensitive = true
             });
 
-            var healthStatus = string.Equals(status?.Status, desiredHealthStatus, StringComparison.InvariantCultureIgnoreCase) ? HealthStatus.Healthy : HealthStatus.Unhealthy;
+            if (IsHealth(status))
+            {
+                return HealthCheckResult.Healthy();
+            }
 
-            return new HealthCheckResult(healthStatus);
+            return HealthCheckResult.Unhealthy();
         }
         catch (Exception ex)
         {
             return HealthCheckResult.Unhealthy($"Error: {ex.Message}");
         }
+    }
+
+    private bool IsHealth(OtelStatus? status)
+    {
+        return status is not null && string.Equals(status.Status, desiredHealthStatus, StringComparison.InvariantCultureIgnoreCase);
     }
 
     private record class OtelStatus

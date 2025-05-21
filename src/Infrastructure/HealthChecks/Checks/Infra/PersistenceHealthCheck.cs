@@ -1,4 +1,4 @@
-﻿namespace ButtonShop.Infrastructure.HealthChecks.Checks;
+﻿namespace ButtonShop.Infrastructure.HealthChecks.Checks.Infra;
 
 internal sealed class PersistenceHealthCheck : IHealthCheck
 {

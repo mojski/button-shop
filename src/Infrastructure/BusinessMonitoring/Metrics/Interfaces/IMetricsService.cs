@@ -1,10 +1,9 @@
-﻿namespace ButtonShop.Infrastructure.BusinessMonitoring.Metrics.Interfaces;
+﻿using ButtonShop.Application.Events;
+
+namespace ButtonShop.Infrastructure.BusinessMonitoring.Metrics.Interfaces;
 
 internal interface IMetricsService
 {
-    void AddOrder(int value = 1);
-    void SellBlue(int count);
-    void SellGreen(int count);
-    void SellRed(int count);
-    void ShipOrders(int value = 1);
+    Task AddOrderMetrics(OrderAdded order, CancellationToken cancellationToken = default);
+    Task AddShipmentMetrics(CancellationToken cancellationToken = default);
 }

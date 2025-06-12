@@ -109,7 +109,43 @@ services:
       - button-network
     volumes:
       - ./prometheus/blackbox.yml:/etc/blackbox_exporter/config.yml
+  redis:
+    image: redis:7
+    container_name: redis
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - button-network
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: redis-commander
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - button-network
+  business-metrics:
+    container_name: business-metrics
+    build:
+      context: ../src
+      dockerfile: Dockerfile.BusinessMetricsService
+    image: business-metrics-service:local
+    environment:
+      - Redis__Host=redis
+      - Redis__Port=6379
+    restart: unless-stopped
+    depends_on:
+      - redis
+    networks:
+      - button-network
 
 volumes:
   prom_data:
   elastic_data:
+  redis-data:

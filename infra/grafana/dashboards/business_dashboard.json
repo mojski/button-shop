@@ -185,7 +185,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "{__name__=\"button_shop_sold_red\", instance=\"host.docker.internal:5080\", job=\"buttonstats\"}"
+              "options": "button_shop_sold_red"
             },
             "properties": [
               {
@@ -200,7 +200,22 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "{__name__=\"button_shop_sold_green\", instance=\"host.docker.internal:5080\", job=\"buttonstats\"}"
+              "options": "button_shop_sold_blue"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "button_shop_sold_green"
             },
             "properties": [
               {

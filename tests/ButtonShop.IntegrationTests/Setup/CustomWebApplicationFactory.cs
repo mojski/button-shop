@@ -1,5 +1,4 @@
 ﻿
-using ButtonShop.Infrastructure.Monitoring.Elastic;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Interfaces;
 using ButtonShop.IntegrationTests.Fakes;
 using Microsoft.AspNetCore.Hosting;

@@ -1,4 +1,3 @@
-
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
@@ -9,6 +8,7 @@ COPY WebApi/ButtonShop.WebApi.csproj WebApi/ButtonShop.WebApi.csproj
 COPY Application/ButtonShop.Application.csproj Application/ButtonShop.Application.csproj
 COPY Domain/ButtonShop.Domain.csproj Domain/ButtonShop.Domain.csproj
 COPY Infrastructure/ButtonShop.Infrastructure.csproj Infrastructure/ButtonShop.Infrastructure.csproj
+COPY Common/ButtonShop.Common.csproj Common/ButtonShop.Common.csproj
 COPY ButtonShop.sln ButtonShop.sln
 RUN dotnet restore
 

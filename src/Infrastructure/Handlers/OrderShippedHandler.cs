@@ -23,7 +23,8 @@ internal sealed class OrderShippedHandler : INotificationHandler<OrderShipped>
     public async Task Handle(OrderShipped notification, CancellationToken cancellationToken)
     {
         this.logger.LogInformation("OrderShipped handle for id {id}", notification.Id);
-        this.metricsService.ShipOrders();
+        
+        await this.metricsService.AddShipmentMetrics(cancellationToken);
 
         var @event = new BusinessEvent
         {

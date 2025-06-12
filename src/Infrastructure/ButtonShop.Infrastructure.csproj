@@ -7,6 +7,7 @@
     <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
     <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" />
     <PackageReference Include="OpenTelemetry.Instrumentation.Http" />
+    <PackageReference Include="StackExchange.Redis" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\ButtonShop.Application.csproj" />
+    <ProjectReference Include="..\Common\ButtonShop.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

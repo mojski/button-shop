@@ -355,6 +355,86 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 0,
+                  "text": "Unhealthy"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Healthy"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 16,
+        "y": 1
+      },
+      "id": 23,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "probe_success{instance=\"http://host.docker.internal:5080/health/redis\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Redis",
+      "type": "stat"
+    },
+    {
       "collapsed": true,
       "gridPos": {
         "h": 1,
@@ -383,8 +463,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               }
@@ -395,7 +474,7 @@
             "h": 16,
             "w": 24,
             "x": 0,
-            "y": 12
+            "y": 16
           },
           "id": 17,
           "options": {
@@ -464,7 +543,7 @@
             "h": 22,
             "w": 24,
             "x": 0,
-            "y": 75
+            "y": 79
           },
           "id": 1,
           "options": {
@@ -522,8 +601,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -535,7 +613,7 @@
             "h": 5,
             "w": 5,
             "x": 0,
-            "y": 13
+            "y": 17
           },
           "id": 10,
           "options": {
@@ -587,8 +665,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -603,7 +680,7 @@
             "h": 5,
             "w": 6,
             "x": 5,
-            "y": 13
+            "y": 17
           },
           "id": 11,
           "options": {
@@ -655,8 +732,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -671,7 +747,7 @@
             "h": 5,
             "w": 6,
             "x": 11,
-            "y": 13
+            "y": 17
           },
           "id": 14,
           "options": {
@@ -723,8 +799,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               }
@@ -735,7 +810,7 @@
             "h": 5,
             "w": 7,
             "x": 17,
-            "y": 13
+            "y": 17
           },
           "id": 12,
           "options": {
@@ -820,8 +895,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -833,7 +907,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 18
+            "y": 22
           },
           "id": 15,
           "options": {
@@ -966,8 +1040,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -983,7 +1056,7 @@
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 26
+            "y": 30
           },
           "id": 13,
           "options": {
@@ -1090,8 +1163,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1106,7 +1178,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 32
+            "y": 36
           },
           "id": 3,
           "options": {
@@ -1187,8 +1259,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1203,7 +1274,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 32
+            "y": 36
           },
           "id": 4,
           "options": {
@@ -1284,8 +1355,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1300,7 +1370,7 @@
             "h": 6,
             "w": 12,
             "x": 0,
-            "y": 40
+            "y": 44
           },
           "id": 7,
           "options": {
@@ -1381,8 +1451,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1397,7 +1466,7 @@
             "h": 6,
             "w": 12,
             "x": 12,
-            "y": 40
+            "y": 44
           },
           "id": 8,
           "options": {
@@ -1478,8 +1547,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1494,7 +1562,7 @@
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 46
+            "y": 50
           },
           "id": 9,
           "options": {
@@ -1575,8 +1643,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1592,7 +1659,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 52
+            "y": 56
           },
           "id": 16,
           "options": {
@@ -1767,6 +1834,6 @@
   "timezone": "browser",
   "title": "Technical dashboard",
   "uid": "cedimlql7cxkwf",
-  "version": 6,
+  "version": 2,
   "weekStart": ""
 }

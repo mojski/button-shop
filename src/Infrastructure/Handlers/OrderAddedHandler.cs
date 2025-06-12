@@ -24,10 +24,7 @@ internal sealed class OrderAddedHandler : INotificationHandler<OrderAdded>
     {
         this.logger.LogInformation("OrderAdded handle for id {id}", notification.Id);
 
-        this.metricsService.AddOrder();
-        this.metricsService.SellRed(notification.Items[ButtonColors.Red]);
-        this.metricsService.SellGreen(notification.Items[ButtonColors.Green]);
-        this.metricsService.SellBlue(notification.Items[ButtonColors.Blue]);
+        await this.metricsService.AddOrderMetrics(notification);
 
         var geolocation = new OrderGeoLoc
         {

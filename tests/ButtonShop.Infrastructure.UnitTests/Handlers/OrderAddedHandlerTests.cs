@@ -11,8 +11,8 @@ namespace ButtonShop.Infrastructure.UnitTests.Handlers;
 [TestClass]
 public sealed class OrderAddedHandlerTests
 {
-    private static string LONGITUDE = "50.0";
-    private static string LATITUDE = "20.0";
+    private static double LONGITUDE = 50.0;
+    private static double LATITUDE = 20.0;
     private static string LOG_LEVEL = "INFO";
 
     private IElasticSearchService elasticSearchService = Substitute.For<IElasticSearchService>();
@@ -49,10 +49,7 @@ public sealed class OrderAddedHandlerTests
         await this.handler!.Handle(notification, cancellationToken);
 
         // Assert
-        this.metricsService.Received(1).AddOrder();
-        this.metricsService.Received(1).SellRed(2);
-        this.metricsService.Received(1).SellGreen(3);
-        this.metricsService.Received(1).SellBlue(4);
+        await this.metricsService.Received(1).AddOrderMetrics(notification);
 
         await this.elasticSearchService.Received(1).AddGeoLocationStat(Arg.Is<OrderGeoLoc>(geo =>
             geo.Longitude == LONGITUDE &&

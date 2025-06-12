@@ -16,6 +16,7 @@ public static class DependencyInjection
         services.AddBusinessMonitoring(configuration);
         services.AddCustomHealthChecks();
         services.AddOpenTelemetry(configuration);
+        services.AddSingleton<InstanceIdentifier>();
     }
 
     public static void UseInfrastructure(this IEndpointRouteBuilder app)

@@ -1,0 +1,27 @@
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
+
+COPY Directory.Build.props Directory.Build.props
+COPY Directory.Packages.props Directory.Packages.props
+
+COPY BusinessMetricsService/ButtonShop.BusinessMetricsService.csproj BusinessMetricsService/ButtonShop.BusinessMetricsService.csproj
+COPY Common/ButtonShop.Common.csproj Common/ButtonShop.Common.csproj
+RUN dotnet restore BusinessMetricsService/ButtonShop.BusinessMetricsService.csproj
+
+COPY . ./
+
+RUN dotnet build BusinessMetricsService/ButtonShop.BusinessMetricsService.csproj --configuration Release --output /app/build
+RUN dotnet publish BusinessMetricsService/ButtonShop.BusinessMetricsService.csproj --configuration Release --output /app/publish
+
+
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
+WORKDIR /app
+
+RUN groupadd -g 10000 dotnet && useradd -u 10000 -g dotnet dotnet && chown -R dotnet:dotnet /app
+USER dotnet:dotnet
+
+EXPOSE 9091
+
+COPY --from=build /app/publish .
+
+ENTRYPOINT ["dotnet", "ButtonShop.BusinessMetricsService.dll"]

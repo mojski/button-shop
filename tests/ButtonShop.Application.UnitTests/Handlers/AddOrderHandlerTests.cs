@@ -13,8 +13,8 @@ public class AddOrderHandlerTests
 {
     private static string CUSTOMER_NAME = "CustomerName";
     private static string CUSTOMER_ADDRESS = "Address";
-    private static string LONGITUDE = "50.0";
-    private static string LATITUDE = "20.0";
+    private static double LONGITUDE = 50.0;
+    private static double LATITUDE = 20.0;
     private static string RED_COLOR = "Red";
     private static string GREEN_COLOR = "Green";
     private static string BLUE_COLOR = "Blue";

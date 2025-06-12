@@ -2,9 +2,12 @@ global:
   scrape_interval: 15s
 
 scrape_configs:
-  - job_name: 'buttonstats'
+  - job_name: 'aspnet_metrics'
     static_configs:
       - targets: ['host.docker.internal:5080'] # scraps outside docker
+  - job_name: 'buttonstats'
+    static_configs:
+      - targets: ['business-metrics:9091']
   - job_name: 'health-endpoints'
     metrics_path: /probe
     params:
@@ -14,6 +17,7 @@ scrape_configs:
           - http://host.docker.internal:5080/health
           - http://host.docker.internal:5080/health/otel
           - http://host.docker.internal:5080/health/elasticsearch
+          - http://host.docker.internal:5080/health/redis
           - http://host.docker.internal:5080/health/system
     relabel_configs:
       - source_labels: [__address__]

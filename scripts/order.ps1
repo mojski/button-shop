@@ -34,7 +34,7 @@ $body = @{
                     blue     = $order.Blue
                 }
             } | ConvertTo-Json -depth 2
-$random = Get-Random -Maximum 25
+$random = Get-Random -Maximum 10
 Start-Sleep -Seconds $random
 Invoke-RestMethod 'http://localhost:5080/orders/add' -Method 'POST' -Headers $headers -Body $body
 Write-Output "Order sent"

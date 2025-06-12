@@ -7,7 +7,6 @@ using Microsoft.Extensions.Logging.Abstractions;
 
 namespace ButtonShop.Infrastructure.UnitTests.Handlers;
 
-
 [TestClass]
 public sealed class OrderShippedHandlerTests
 {
@@ -38,7 +37,7 @@ public sealed class OrderShippedHandlerTests
         await this.handler!.Handle(notification, cancellationToken);
 
         // Assert
-        this.metricsService.Received(1).ShipOrders();
+        await this.metricsService.Received(1).AddShipmentMetrics();
 
         await this.elasticSearchService.Received(1).AddEvent(Arg.Is<BusinessEvent>(e =>
             e.Level == LOG_LEVEL &&

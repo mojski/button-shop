@@ -32,7 +32,7 @@ By storing metrics in Redis using the {instance_id}_{metric_name} key format and
 There are two options. Checking healthchecks directly or via web api. The second solution provides a real check of whether the application can connect to a given service. Additionally, it allows for convenient use of uniform responses by the balckbox service. 
 
 
-![](doc/readme_assets/image-2025-06-12-14-19-12.png)
+![](doc/readme_assets/image-2025-06-14-15-29-53.png)
 
 ### Run demo
 

@@ -50,17 +50,29 @@
                 "0": {
                   "color": "red",
                   "index": 0,
-                  "text": "Unhealthy"
+                  "text": "Server"
                 },
                 "1": {
                   "color": "green",
                   "index": 1,
-                  "text": "Healthy"
+                  "text": "Server"
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "match": "null+nan",
+                "result": {
+                  "color": "#464649",
+                  "index": 2,
+                  "text": "Server (no data)"
+                }
+              },
+              "type": "special"
             }
           ],
+          "noValue": "Server - no data",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -101,8 +113,8 @@
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "probe_success{instance=\"http://host.docker.internal:5080/health/system\"}",
+          "editorMode": "code",
+          "expr": "probe_success{instance=~\"http://[^:]+:5080/health/system\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "__auto",
@@ -111,7 +123,7 @@
           "useBackend": false
         }
       ],
-      "title": "Server",
+      "title": " ",
       "type": "stat"
     },
     {
@@ -130,17 +142,28 @@
                 "0": {
                   "color": "red",
                   "index": 0,
-                  "text": "Unhealthy"
+                  "text": "Application"
                 },
                 "1": {
                   "color": "green",
                   "index": 1,
-                  "text": "Healthy"
+                  "text": "Application"
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "match": "null+nan",
+                "result": {
+                  "index": 2,
+                  "text": "Application no data"
+                }
+              },
+              "type": "special"
             }
           ],
+          "noValue": "Application",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -181,8 +204,8 @@
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "probe_success{instance=\"http://host.docker.internal:5080/health\"}",
+          "editorMode": "code",
+          "expr": "probe_success{instance=~\"http://[^:]+:5080/health\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "__auto",
@@ -191,7 +214,7 @@
           "useBackend": false
         }
       ],
-      "title": "Application",
+      "title": " ",
       "type": "stat"
     },
     {
@@ -210,15 +233,26 @@
                 "0": {
                   "color": "red",
                   "index": 0,
-                  "text": "Unhealthy"
+                  "text": "ElasticSearch"
                 },
                 "1": {
                   "color": "green",
                   "index": 1,
-                  "text": "Healthy"
+                  "text": "ElasticSearch"
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "match": "null+nan",
+                "result": {
+                  "color": "#464649",
+                  "index": 2,
+                  "text": "Elastic (no data)"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -235,7 +269,7 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 4,
+        "w": 6,
         "x": 8,
         "y": 1
       },
@@ -261,8 +295,8 @@
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "probe_success{instance=\"http://host.docker.internal:5080/health/elasticsearch\"}",
+          "editorMode": "code",
+          "expr": "probe_success{instance=~\"http://[^:]+:5080/health/elasticsearch\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "__auto",
@@ -271,7 +305,7 @@
           "useBackend": false
         }
       ],
-      "title": "ElasticSearch",
+      "title": " ",
       "type": "stat"
     },
     {
@@ -290,15 +324,26 @@
                 "0": {
                   "color": "red",
                   "index": 0,
-                  "text": "Unhealthy"
+                  "text": "Otel Collector"
                 },
                 "1": {
                   "color": "green",
                   "index": 1,
-                  "text": "Healthy"
+                  "text": "Otel Collector"
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "match": "null+nan",
+                "result": {
+                  "color": "#464649",
+                  "index": 2,
+                  "text": "Otel (no data)"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -315,9 +360,9 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 4,
-        "x": 12,
-        "y": 1
+        "w": 5,
+        "x": 0,
+        "y": 5
       },
       "id": 22,
       "options": {
@@ -341,8 +386,8 @@
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "probe_success{instance=\"http://host.docker.internal:5080/health/system\"}",
+          "editorMode": "code",
+          "expr": "probe_success{instance=~\"http://[^:]+:5080/health/otel\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "__auto",
@@ -351,7 +396,7 @@
           "useBackend": false
         }
       ],
-      "title": "Otel Collector",
+      "title": " ",
       "type": "stat"
     },
     {
@@ -370,15 +415,117 @@
                 "0": {
                   "color": "red",
                   "index": 0,
-                  "text": "Unhealthy"
+                  "text": "Persistence"
                 },
                 "1": {
                   "color": "green",
                   "index": 1,
-                  "text": "Healthy"
+                  "text": "Persistence"
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "match": "null+nan",
+                "result": {
+                  "color": "#464646",
+                  "index": 2,
+                  "text": "Persistence (no data)"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 5,
+        "y": 5
+      },
+      "id": 24,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "probe_success{instance=~\"http://[^:]+:5080/health/persistence\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": " ",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus-ds"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 0,
+                  "text": "Redis"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Redis"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "match": "null+nan",
+                "result": {
+                  "color": "#464649",
+                  "index": 2,
+                  "text": "Redis (no data)"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -396,8 +543,8 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 16,
-        "y": 1
+        "x": 10,
+        "y": 5
       },
       "id": 23,
       "options": {
@@ -421,8 +568,8 @@
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "probe_success{instance=\"http://host.docker.internal:5080/health/redis\"}",
+          "editorMode": "code",
+          "expr": "probe_success{instance=~\"http://[^:]+:5080/health/redis\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "__auto",
@@ -431,7 +578,7 @@
           "useBackend": false
         }
       ],
-      "title": "Redis",
+      "title": " ",
       "type": "stat"
     },
     {
@@ -440,7 +587,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 9
       },
       "id": 6,
       "panels": [
@@ -582,7 +729,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 10
       },
       "id": 5,
       "panels": [
@@ -1809,8 +1956,8 @@
       },
       {
         "current": {
-          "text": "host.docker.internal:5080",
-          "value": "host.docker.internal:5080"
+          "text": "business-metrics:9091",
+          "value": "business-metrics:9091"
         },
         "definition": "label_values(process_num_threads,instance)",
         "name": "instance",

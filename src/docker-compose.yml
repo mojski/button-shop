@@ -10,7 +10,8 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
       ELASTICSEARCH__ADDRESS: "http://elasticsearch:9200"
-      OPENTELEMETRY__ENDPOINT: "http://otel:4317"
+      ELASTICSEARCH__HEALTHCHECKENDPOINT: "http://elasticsearch:9200"
+      OPENTELEMETRY__HOST: "otel"
       POSTGRESQL__HOST: postgres
       POSTGRESQL__DATABASE: buttonshop
       POSTGRESQL__PORT: 5432
@@ -67,7 +68,7 @@ services:
     networks:
       - button-network
     volumes:
-      - ../infra/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../infra/prometheus/prometheus.docker_all_in_one.yml:/etc/prometheus/prometheus.yml
       - prom_data:/prometheus
   elasticsearch:
     image: elasticsearch:${ELASTICSEARCH_TAG:-8.8.0}
@@ -111,6 +112,16 @@ services:
     command: [ "-config.file=/etc/tempo-config.yaml" ]
     networks:
       - button-network
+  blackbox-exporter:
+    image: prom/blackbox-exporter
+    container_name: blackbox-exporter
+    restart: unless-stopped
+    ports:
+      - "9115:9115"
+    networks:
+      - button-network
+    volumes:
+      - ../infra/prometheus/blackbox.yml:/etc/blackbox_exporter/config.yml
   postgres:
     image: postgres:16
     container_name: postgres

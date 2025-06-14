@@ -1,7 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" />
     <PackageReference Include="Elastic.Clients.Elasticsearch" />
+    <PackageReference Include="Marten" />
     <PackageReference Include="prometheus-net.AspNetCore" />
     <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" />
     <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
@@ -23,6 +25,8 @@
 
   <ItemGroup>
     <Using Include="Elastic.Clients.Elasticsearch" />
+    <Using Include="JasperFx" />
+    <Using Include="Marten" />
     <Using Include="MediatR" />
     <Using Include="Microsoft.AspNetCore.Builder" />
     <Using Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" />

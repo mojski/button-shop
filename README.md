@@ -23,7 +23,9 @@ All of them can be imported through the Grafana UI.
 
 ### Actual architecture
 
-![alt text](/doc/readme_assets/arch.png)
+![](doc/readme_assets/image-2025-06-14-12-19-19.png)
+
+By storing metrics in Redis using the {instance_id}_{metric_name} key format and exposing them to Prometheus through a separate service that reads data from Redis, it is possible to coordinate multiple instances of the main application.
 
 ### Healthchecks
 

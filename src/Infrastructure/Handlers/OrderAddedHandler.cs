@@ -1,7 +1,6 @@
 ﻿namespace ButtonShop.Infrastructure.Handlers;
 
 using ButtonShop.Application.Events;
-using ButtonShop.Domain.Entities;
 using ButtonShop.Infrastructure.BusinessMonitoring.Metrics.Interfaces;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Interfaces;
 using ButtonShop.Infrastructure.Monitoring.Elastic.Models;

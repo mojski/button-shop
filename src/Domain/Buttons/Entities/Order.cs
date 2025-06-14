@@ -5,8 +5,9 @@ namespace ButtonShop.Domain.Entities;
 public sealed class Order
 {
     public string CustomerName { get; private set; }
-    public Guid Id { get; set; }
-    public Dictionary<ButtonColors, int> Items { get; private set; }
+    public Guid Id { get; init; }
+    public IReadOnlyDictionary<ButtonColors, int> Items => items;
+    public Dictionary<ButtonColors, int> items { get; private set; }
     public string ShippingAddress { get; private set; }
     public OrderStatuses Status { get; private set; }
 
@@ -16,7 +17,7 @@ public sealed class Order
         this.Id = id;
         this.ShippingAddress = shippingAddress;
         this.Status = OrderStatuses.Awaiting;
-        this.Items = new Dictionary<ButtonColors, int>();
+        this.items = new Dictionary<ButtonColors, int>();
     }
 
     public void AddItems(string color, int quantity)
@@ -30,11 +31,23 @@ public sealed class Order
 
         if (this.Items.ContainsKey(parsedColor))
         {
-            this.Items[parsedColor] += quantity;
+            this.items[parsedColor] += quantity;
         }
         else
         {
-            this.Items[parsedColor] = quantity;
+            this.items[parsedColor] = quantity;
+        }
+    }
+
+    public void AddItems(ButtonColors color, int quantity)
+    {
+        if (this.items.ContainsKey(color))
+        {
+            this.items[color] += quantity;
+        }
+        else
+        {
+            this.items[color] = quantity;
         }
     }
 

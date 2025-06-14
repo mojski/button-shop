@@ -3,10 +3,8 @@ using ButtonShop.Application.Events;
 using ButtonShop.Application.Handlers;
 using ButtonShop.Domain.Entities;
 using ButtonShop.Domain.Interfaces;
-using Microsoft.Extensions.Logging.Abstractions;
 
 namespace ButtonShop.Application.UnitTests.Handlers;
-
 
 [TestClass]
 public class AddOrderHandlerTests

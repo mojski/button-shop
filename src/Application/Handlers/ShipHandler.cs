@@ -22,16 +22,21 @@ public sealed class ShipHandler : IRequestHandler<Ship>
     {
         this.logger.LogInformation("Ship handle for id {id}", request.OrderId);
 
-        var order = this.repository.GetOrder(request.OrderId);
+        var order = await this.repository.GetOrder(request.OrderId);
 
         if (order is null)
         {
             throw new OrderNotFoundException(request.OrderId);
         }
 
+        if (order.Status is Domain.Entities.OrderStatuses.Shipped)
+        {
+            return;
+        }
+
         order!.Ship();
 
-        await this.repository.ShipOrder(request.OrderId, cancellationToken);
+        await this.repository.SaveOrder(order, cancellationToken);
 
         var notification = new OrderShipped()
         {

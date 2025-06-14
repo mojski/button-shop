@@ -1,6 +1,7 @@
 using ButtonShop.Application;
 using ButtonShop.Infrastructure;
 using ButtonShop.Infrastructure.OpenTelemetry;
+using ButtonShop.Infrastructure.Persistence;
 using ButtonShop.WebApi.ExceptionHandling;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,8 @@ builder.Services.AddControllers(options =>
 builder.Services.AddApplication();
 builder.Logging.UseOpenTelemetry(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
+
+var postgreOptions = builder.Configuration.GetSection(PostgreSqlOptions.SECTION_NAME).Get<PostgreSqlOptions>();
 
 var app = builder.Build();
 app.UseExceptionHandler();

@@ -137,11 +137,25 @@ services:
       dockerfile: Dockerfile.BusinessMetricsService
     image: business-metrics-service:local
     environment:
-      - Redis__Host=redis
-      - Redis__Port=6379
+      REDIS__HOST: "redis"
+      REDIS__PORT: "6379"
     restart: unless-stopped
     depends_on:
       - redis
+    networks:
+      - button-network
+  postgres:
+    image: postgres:16
+    container_name: buttonshop-persistence
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: marten
+      POSTGRES_PASSWORD: marten
+      POSTGRES_DB: buttonshop
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     networks:
       - button-network
 
@@ -149,3 +163,4 @@ volumes:
   prom_data:
   elastic_data:
   redis-data:
+  pgdata:

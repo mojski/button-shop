@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Using Include="FluentAssertions" />
+    <Using Include="Marten" />
+    <Using Include="Microsoft.Extensions.Logging.Abstractions" />
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
     <Using Include="NSubstitute" />
   </ItemGroup>

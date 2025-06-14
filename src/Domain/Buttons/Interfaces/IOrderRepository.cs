@@ -4,7 +4,6 @@ using ButtonShop.Domain.Entities;
 
 public interface IOrderRepository
 {
-    public Order? GetOrder(Guid id);
-    public Task SaveOrder(Order order, CancellationToken cancellationToken = default);
-    Task ShipOrder(Guid orderId, CancellationToken cancellationToken = default);
+    Task<Order?> GetOrder(Guid id, CancellationToken cancellationToken = default);
+    Task SaveOrder(Order order, CancellationToken cancellationToken = default);
 }

@@ -1,8 +1,6 @@
 ﻿using ButtonShop.Domain.Entities;
-using ButtonShop.Infrastructure.Services;
-using FluentAssertions;
-using Microsoft.Extensions.Logging.Abstractions;
-
+using ButtonShop.Infrastructure.Persistence.Models;
+using ButtonShop.Infrastructure.Persistence.Services;
 
 namespace ButtonShop.Infrastructure.UnitTests.Services;
 
@@ -11,76 +9,78 @@ public class OrderRepositoryTests
 {
     private static string CUSTOMER_NAME = "CustomerName";
     private static string CUSTOMER_ADDRESS = "Address";
+    private static Guid ORDER_ID = Guid.Parse("5f844d79-91c8-4ff0-8062-b479e9ad725b");
     private NullLogger<OrderRepository> logger = new();
+    private readonly IDocumentStore documentStore = Substitute.For<IDocumentStore>();
 
     private OrderRepository repository;
+    private readonly Order orderEntity;
+    private readonly OrderDbModel dbModel;
 
     public OrderRepositoryTests()
     {
-        this.repository = new OrderRepository(this.logger);
+        this.repository = new OrderRepository(this.documentStore, this.logger);
+
+        this.dbModel = new OrderDbModel
+        {
+            Id = ORDER_ID,
+            CustomerName = CUSTOMER_NAME,
+            ShippingAddress = CUSTOMER_ADDRESS,
+            Status = 0,
+            Items = new Dictionary<int, int>
+            {
+                { (int)ButtonColors.Red, 2 },
+                { (int)ButtonColors.Green, 3 },
+                { (int)ButtonColors.Blue, 7 },
+            }
+        };
+
+        this.orderEntity = new Order(ORDER_ID, CUSTOMER_NAME, CUSTOMER_ADDRESS);
+        orderEntity.AddItems(ButtonColors.Red, 2);
+        orderEntity.AddItems(ButtonColors.Green, 3);
+        orderEntity.AddItems(ButtonColors.Blue, 7);
     }
 
     [TestMethod]
-    public void GetOrder_Should_Return_Order_When_Order_Exists()
+    public async Task GetOrder_Should_Return_Order_When_Order_Exists()
     {
         // Arrange
-        var order = new Order(Guid.NewGuid(), CUSTOMER_NAME, CUSTOMER_ADDRESS);
-        this.repository.SaveOrder(order).Wait();
+        var session = Substitute.For<IQuerySession>();
+
+        session.LoadAsync<OrderDbModel>(ORDER_ID, Arg.Any<CancellationToken>())
+       .Returns(this.dbModel);
+
+        this.documentStore.QuerySession().Returns(session);
 
         // Act
-        var retrievedOrder = this.repository.GetOrder(order.Id);
+        var retrievedOrder = await this.repository.GetOrder(ORDER_ID);
 
         // Assert
         retrievedOrder.Should().NotBeNull();
-        retrievedOrder.Should().BeEquivalentTo(order);
-    }
-
-    [TestMethod]
-    public void GetOrder_Should_Return_Null_When_Order_Does_Not_Exist()
-    {
-        // Act
-        var retrievedOrder = this.repository.GetOrder(Guid.NewGuid());
-
-        // Assert
-        retrievedOrder.Should().BeNull();
+        retrievedOrder.Should().BeEquivalentTo(this.orderEntity);
     }
 
     [TestMethod]
     public async Task SaveOrder_Should_Add_Order()
     {
         // Arrange
-        var order = new Order(Guid.NewGuid(), CUSTOMER_NAME, CUSTOMER_ADDRESS);
+        var session = Substitute.For<IDocumentSession>();
+        this.documentStore.LightweightSession().Returns(session);
+
+        OrderDbModel? savedOrder = null;
+
+        session.When(s => s.Store<OrderDbModel>(Arg.Any<OrderDbModel[]>()))
+               .Do(call =>
+               {
+                   var array = call.Arg<OrderDbModel[]>();
+                   savedOrder = array.FirstOrDefault();
+               });
 
         // Act
-        await this.repository.SaveOrder(order);
+        await this.repository.SaveOrder(this.orderEntity);
 
         // Assert
-        var retrievedOrder = this.repository.GetOrder(order.Id);
-        retrievedOrder.Should().NotBeNull();
-        retrievedOrder.Should().BeEquivalentTo(order);
-    }
-
-    [TestMethod]
-    public async Task ShipOrder_Should_Change_Order_Status_To_Shipped_When_Order_Exists()
-    {
-        // Arrange
-        var order = new Order(Guid.NewGuid(), CUSTOMER_NAME, CUSTOMER_ADDRESS);
-        await this.repository.SaveOrder(order);
-
-        // Act
-        await this.repository.ShipOrder(order.Id);
-
-        // Assert
-        order.Status.Should().Be(OrderStatuses.Shipped);
-    }
-
-    [TestMethod]
-    public async Task ShipOrder_Should_Do_Nothing_When_Order_Does_Not_Exist()
-    {
-        // Act
-        Func<Task> act = async () => await this.repository.ShipOrder(Guid.NewGuid());
-
-        // Assert
-        await act.Should().NotThrowAsync();
+        savedOrder.Should().BeEquivalentTo(this.dbModel);
+        await session.Received(1).SaveChangesAsync(Arg.Any<CancellationToken>());
     }
 }

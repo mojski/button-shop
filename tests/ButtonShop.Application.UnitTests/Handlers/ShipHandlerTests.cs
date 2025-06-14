@@ -42,13 +42,13 @@ public class ShipHandlerTests
             ;
 
         OrderShipped? notificationSent = null;
-        Guid orderIdShipped = Guid.Empty;
+        Order? shipped = null;
 
         await this.mediator
             .Publish(Arg.Do<OrderShipped>(notification => notificationSent = notification), Arg.Any<CancellationToken>());
 
         await this.repository
-            .ShipOrder(Arg.Do<Guid>(orderId => orderIdShipped = orderId), Arg.Any<CancellationToken>());
+            .SaveOrder(Arg.Do<Order>(order => shipped = order), Arg.Any<CancellationToken>());
 
         // Act
         await handler!.Handle(request, CancellationToken.None);
@@ -65,8 +65,8 @@ public class ShipHandlerTests
             .BeEquivalentTo(expectedNotification)
             ;
 
-        orderIdShipped.Should()
-            .Be(request.OrderId)
+        shipped!.Status.Should()
+            .Be(OrderStatuses.Shipped)
             ;
     }
 }

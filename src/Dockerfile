@@ -9,8 +9,8 @@ COPY Application/ButtonShop.Application.csproj Application/ButtonShop.Applicatio
 COPY Domain/ButtonShop.Domain.csproj Domain/ButtonShop.Domain.csproj
 COPY Infrastructure/ButtonShop.Infrastructure.csproj Infrastructure/ButtonShop.Infrastructure.csproj
 COPY Common/ButtonShop.Common.csproj Common/ButtonShop.Common.csproj
-COPY ButtonShop.sln ButtonShop.sln
-RUN dotnet restore
+#COPY ButtonShop.sln ButtonShop.sln
+RUN dotnet restore WebApi/ButtonShop.WebApi.csproj
 
 COPY . ./
 
@@ -24,7 +24,7 @@ WORKDIR /app
 RUN groupadd -g 10000 dotnet && useradd -u 10000 -g dotnet dotnet && chown -R dotnet:dotnet /app
 USER dotnet:dotnet
 
-ENV ASPNETCORE_URLS http://*:5080
+ENV ASPNETCORE_URLS=http://*:5080
 EXPOSE 5080
 
 COPY --from=build /app/publish .
